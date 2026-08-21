@@ -6,7 +6,7 @@
     <title>Atma Express Laundry Bali | Fast Wash & Pickup</title>
     <style>
         :root {
-            --bg: #f4f7f6;
+            --bg: #f8fafc;
             --surface: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -14,7 +14,7 @@
             --primary-soft: #e0f2fe;
             --accent: #25D366;
             --border: #e2e8f0;
-            --radius: 12px;
+            --radius: 16px;
         }
 
         * {
@@ -28,7 +28,7 @@
             background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.5;
-            padding-bottom: 100px;
+            padding-bottom: 110px;
         }
 
         .container {
@@ -37,15 +37,72 @@
             padding: 16px;
         }
 
-        /* Header Card */
+        /* Top Nav & Language Switcher */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .lang-picker {
+            display: flex;
+            gap: 6px;
+            background: var(--surface);
+            padding: 4px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 12px;
+            transition: transform 0.1s, opacity 0.2s;
+            opacity: 0.5;
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            transform: scale(1.15);
+        }
+
+        /* Hero Header with Tropical Vibe */
         .hero-card {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: white;
             border-radius: var(--radius);
             padding: 24px 20px;
             text-align: center;
             box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.3);
             margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Bali Pattern SVG Overlay */
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C65 25 75 35 100 50 C75 65 65 75 50 100 C35 75 25 65 0 50 C25 35 35 25 50 0 Z' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
         }
 
         .badge-status {
@@ -70,14 +127,14 @@
         }
 
         .hero-card h1 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 6px;
         }
 
         .hero-card p {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             opacity: 0.9;
         }
 
@@ -214,7 +271,7 @@
             font-weight: 600;
         }
 
-        /* Coverage */
+        /* Coverage Box */
         .info-box {
             background: var(--surface);
             border-left: 4px solid var(--primary);
@@ -225,7 +282,7 @@
             margin-top: 20px;
         }
 
-        /* Sticky Footer */
+        /* Sticky Footer CTA */
         .sticky-footer {
             position: fixed;
             bottom: 0;
@@ -263,27 +320,38 @@
 <body>
 
     <div class="container">
+        <!-- Top Nav & Language Bar -->
+        <div class="top-nav">
+            <div class="brand-logo">🌴 ATMA LAUNDRY</div>
+            <div class="lang-picker">
+                <button class="lang-btn active" onclick="setLang('id')" title="Bahasa Indonesia">🇮🇩</button>
+                <button class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+                <button class="lang-btn" onclick="setLang('zh')" title="中文">🇨🇳</button>
+                <button class="lang-btn" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+            </div>
+        </div>
+
         <!-- Hero Header -->
         <div class="hero-card">
             <div class="badge-status">
-                <div class="dot"></div> Driver Ready / Pickup Active
+                <div class="dot"></div> <span id="txt-status">Driver Ready / Antar Jemput Aktif</span>
             </div>
             <h1>ATMA LAUNDRY EXPRESS</h1>
-            <p>Fast Wash & Free Pickup • Canggu, Seminyak, Kuta, Sanur, Denpasar</p>
+            <p id="txt-sub">Fast Wash & Free Pickup • Canggu, Seminyak, Kuta, Sanur, Denpasar</p>
         </div>
 
         <!-- Price List -->
         <div class="section-title">
-            <span>Daftar Harga / Price List</span>
+            <span id="txt-price-title">Daftar Harga</span>
             <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">(Per Kg)</span>
         </div>
 
         <div class="price-grid">
             <div class="price-card featured">
-                <div class="tag-popular">Most Popular</div>
+                <div class="tag-popular" id="txt-popular">Paling Laris</div>
                 <div>
                     <div class="service-name">Super Express</div>
-                    <div class="service-time">2 Jam Selesai / 2-Hour Service</div>
+                    <div class="service-time" id="t-p1">2 Jam Selesai</div>
                 </div>
                 <div class="price-tag">Rp 50k</div>
             </div>
@@ -291,7 +359,7 @@
             <div class="price-card">
                 <div>
                     <div class="service-name">Fast Express</div>
-                    <div class="service-time">6 Jam Selesai / 6-Hour Service</div>
+                    <div class="service-time" id="t-p2">6 Jam Selesai</div>
                 </div>
                 <div class="price-tag">Rp 35k</div>
             </div>
@@ -299,7 +367,7 @@
             <div class="price-card">
                 <div>
                     <div class="service-name">Same Day</div>
-                    <div class="service-time">12 Jam Selesai / 12-Hour Service</div>
+                    <div class="service-time" id="t-p3">12 Jam Selesai</div>
                 </div>
                 <div class="price-tag">Rp 25k</div>
             </div>
@@ -307,7 +375,7 @@
             <div class="price-card">
                 <div>
                     <div class="service-name">Reguler</div>
-                    <div class="service-time">24 Jam Selesai / 24-Hour Service</div>
+                    <div class="service-time" id="t-p4">24 Jam Selesai</div>
                 </div>
                 <div class="price-tag">Rp 15k</div>
             </div>
@@ -315,73 +383,205 @@
 
         <!-- How It Works -->
         <div class="section-title">
-            <span>Cara Order / How It Works</span>
+            <span id="txt-step-title">Cara Order</span>
         </div>
 
         <div class="steps-card">
             <div class="step-item">
                 <div class="step-num">1</div>
-                <div class="step-text"><strong>Send Location:</strong> Klik tombol WA, kirim lokasi villa/hotel & pilihan paket.</div>
+                <div class="step-text" id="t-s1"><strong>Kirim Lokasi:</strong> Klik tombol WA, kirim lokasi villa/hotel & pilihan paket.</div>
             </div>
             <div class="step-item">
                 <div class="step-num">2</div>
-                <div class="step-text"><strong>Pickup:</strong> Driver meluncur ke lokasimu untuk jemput cucian.</div>
+                <div class="step-text" id="t-s2"><strong>Penjemputan:</strong> Driver meluncur ke lokasimu untuk jemput cucian.</div>
             </div>
             <div class="step-item">
                 <div class="step-num">3</div>
-                <div class="step-text"><strong>Wash & Iron:</strong> Dicuci higienis terpisah per customer, wangi & rapi.</div>
+                <div class="step-text" id="t-s3"><strong>Pencucian:</strong> Dicuci higienis terpisah per customer, wangi & rapi.</div>
             </div>
             <div class="step-item">
                 <div class="step-num">4</div>
-                <div class="step-text"><strong>Delivery:</strong> Diantar kembali tepat waktu ke lokasi Anda.</div>
+                <div class="step-text" id="t-s4"><strong>Pengantaran:</strong> Diantar kembali tepat waktu ke lokasi Anda.</div>
             </div>
         </div>
 
         <!-- Reviews -->
         <div class="section-title">
-            <span>Ulasan Pelanggan / Reviews</span>
+            <span id="txt-rev-title">Ulasan Pelanggan</span>
         </div>
 
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <div class="review-text">"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"</div>
+                <div class="review-text" id="t-r1">"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"</div>
                 <div class="reviewer">Dion R. — ★ Verified Customer</div>
             </div>
 
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <div class="review-text">"Super fast service! Messaged them on WA, driver came to my villa in Canggu 20 mins later. Clothes smell fresh and folded nicely. Tq guys!"</div>
+                <div class="review-text" id="t-r2">"Super fast service! Messaged them on WA, driver came to my villa in Canggu 20 mins later. Clothes smell fresh and folded nicely. Tq guys!"</div>
                 <div class="reviewer">Liam M. — Australia</div>
             </div>
 
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <div class="review-text">"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."</div>
+                <div class="review-text" id="t-r3">"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."</div>
                 <div class="reviewer">Putu S. — Seminyak</div>
             </div>
 
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <div class="review-text">"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use again next time in Bali."</div>
+                <div class="review-text" id="t-r4">"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use again next time in Bali."</div>
                 <div class="reviewer">Clara & Alex — Germany</div>
             </div>
         </div>
 
         <!-- Operational Info -->
-        <div class="info-box">
-            📍 <strong>Area Coverage:</strong> Kuta, Legian, Seminyak, Canggu, Berawa, Umalas, Kerobokan, Sanur & Denpasar.<br>
-            ⏰ <strong>Operating Hours:</strong> 07.00 - 22.00 WITA
+        <div class="info-box" id="txt-info">
+            📍 <strong>Area Layanan:</strong> Kuta, Legian, Seminyak, Canggu, Berawa, Umalas, Kerobokan, Sanur & Denpasar.<br>
+            ⏰ <strong>Jam Operasional:</strong> 07.00 - 22.00 WITA
         </div>
     </div>
 
     <!-- Sticky Floating WA Button -->
     <div class="sticky-footer">
         <!-- GANTI NOMOR DI BAWAH (format 62...) -->
-        <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20mau%20order%20laundry%20express" class="btn-wa" target="_blank">
-            💬 Order Via WhatsApp Now
+        <a id="btn-wa-link" href="https://wa.me/6281234567890?text=Halo%20Admin,%20mau%20order%20laundry%20express" class="btn-wa" target="_blank">
+            💬 <span id="txt-btn">Pesan Via WhatsApp Sekarang</span>
         </a>
     </div>
 
+    <!-- Translation Script -->
+    <script>
+        const translations = {
+            id: {
+                status: "Driver Ready / Antar Jemput Aktif",
+                sub: "Fast Wash & Free Pickup • Canggu, Seminyak, Kuta, Sanur, Denpasar",
+                priceTitle: "Daftar Harga",
+                popular: "Paling Laris",
+                p1: "2 Jam Selesai",
+                p2: "6 Jam Selesai",
+                p3: "12 Jam Selesai",
+                p4: "24 Jam Selesai",
+                stepTitle: "Cara Order",
+                s1: "<strong>Kirim Lokasi:</strong> Klik tombol WA, kirim lokasi villa/hotel & pilihan paket.",
+                s2: "<strong>Penjemputan:</strong> Driver meluncur ke lokasimu untuk jemput cucian.",
+                s3: "<strong>Pencucian:</strong> Dicuci higienis terpisah per customer, wangi & rapi.",
+                s4: "<strong>Pengantaran:</strong> Diantar kembali tepat waktu ke lokasi Anda.",
+                revTitle: "Ulasan Pelanggan",
+                r1: '"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"',
+                r2: '"Super fast service! Messaged them on WA, driver came to my villa in Canggu 20 mins later. Clothes smell fresh and folded nicely. Tq guys!"',
+                r3: '"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."',
+                r4: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use again next time in Bali."',
+                info: "📍 <strong>Area Layanan:</strong> Kuta, Legian, Seminyak, Canggu, Berawa, Umalas, Kerobokan, Sanur & Denpasar.<br>⏰ <strong>Jam Operasional:</strong> 07.00 - 22.00 WITA",
+                btn: "Pesan Via WhatsApp Sekarang",
+                waMsg: "Halo%20Admin,%20mau%20order%20laundry%20express"
+            },
+            en: {
+                status: "Driver Ready / Free Pickup Active",
+                sub: "Fast Wash & Free Pickup • Canggu, Seminyak, Kuta, Sanur, Denpasar",
+                priceTitle: "Price List",
+                popular: "Most Popular",
+                p1: "2-Hour Express Service",
+                p2: "6-Hour Fast Service",
+                p3: "12-Hour Same Day",
+                p4: "24-Hour Regular Service",
+                stepTitle: "How It Works",
+                s1: "<strong>Send Location:</strong> Click WA button, send your villa/hotel location & package choice.",
+                s2: "<strong>Pickup:</strong> Our driver instantly heads to your place to collect laundry.",
+                s3: "<strong>Wash & Iron:</strong> Washed separately per customer, fresh scent & neatly ironed.",
+                s4: "<strong>Delivery:</strong> Delivered back on time right to your door.",
+                revTitle: "Customer Reviews",
+                r1: '"Lifesaver! Needed my clothes done before 2 PM checkout. Picked the 2-hr service and got them back at 12 PM in the lobby. Highly recommended!"',
+                r2: '"Super fast service! Messaged them on WA, driver came to my villa in Canggu 20 mins later. Clothes smell fresh and folded nicely. Tq guys!"',
+                r3: '"Awesome 6-hr express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."',
+                r4: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use again next time in Bali."',
+                info: "📍 <strong>Coverage Area:</strong> Kuta, Legian, Seminyak, Canggu, Berawa, Umalas, Kerobokan, Sanur & Denpasar.<br>⏰ <strong>Opening Hours:</strong> 07:00 AM - 10:00 PM WITA",
+                btn: "Order Via WhatsApp Now",
+                waMsg: "Hello%20Admin,%20I%20would%20like%20to%20order%20express%20laundry"
+            },
+            zh: {
+                status: "司机准备就绪 / 免费接送中",
+                sub: "快速洗涤 & 免费接送 • 苍古、水明漾、库塔、沙努尔、登巴萨",
+                priceTitle: "价格表",
+                popular: "最受欢迎",
+                p1: "2小时特快服务",
+                p2: "6小时快速服务",
+                p3: "12小时当天取件",
+                p4: "24小时标准服务",
+                stepTitle: "服务流程",
+                s1: "<strong>发送位置：</strong> 点击WA按钮，发送您的别墅/酒店位置及套餐选择。",
+                s2: "<strong>上门取件：</strong> 我们的司机将前往您的住所收取衣物。",
+                s3: "<strong>专业洗涤：</strong> 每位客户单独分开清洗，高温烘干并整烫整齐。",
+                s4: "<strong>按时送回：</strong> 在指定时间内送回您的住所。",
+                revTitle: "客户评价",
+                r1: "“真的救了我！下午2点退房前衣服还没洗，选择2小时特快，中午12点就送到了大堂，太赞了！”",
+                r2: "“服务超快！在WA上发消息，20分钟后司机就到了苍古的别墅。衣服很香，叠得整整齐齐。”",
+                r3: "“6小时服务很棒，客服回复快，司机也很友好。完全不用出门。”",
+                r4: "“旅行者的救星！价格非常透明，没有任何隐藏的送货费。下次来巴厘岛一定还会使用。”",
+                info: "📍 <strong>服务区域：</strong> 库塔、雷吉安、水明漾、苍古、贝拉瓦、乌玛拉斯、克罗玻坎、沙努尔 & 登巴萨。<br>⏰ <strong>营业时间：</strong> 07:00 - 22:00 WITA",
+                btn: "立即通过 WhatsApp 预订",
+                waMsg: "你好，我想预订快洗洗衣服务"
+            },
+            ja: {
+                status: "ドライバー待機中 / 無料送迎対応中",
+                sub: "スピード洗濯＆無料送迎 • チャングー、スミニャック、クタ、サヌール、デンパサール",
+                priceTitle: "料金表",
+                popular: "一番人気",
+                p1: "2時間 超特急仕上げ",
+                p2: "6時間 特急仕上げ",
+                p3: "12時間 当日仕上げ",
+                p4: "24時間 通常仕上げ",
+                stepTitle: "ご利用の流れ",
+                s1: "<strong>位置情報を送信:</strong> WAボタンをタップし、ヴィラ/ホテルの location とプランを送信。",
+                s2: "<strong>無料集荷:</strong> ドライバーがすぐにお荷物の回収に伺います。",
+                s3: "<strong>個別洗濯＆アイロン:</strong> お客様ごとに個別で衛生的に洗濯・丁寧にアイロン掛け。",
+                s4: "<strong>お届け:</strong> 指定の時間にご指定の場所へお届けします。",
+                revTitle: "お客様の声",
+                r1: "「14時のチェックアウト前に洗濯が完了して本当に助かりました！2時間コースで12時にはロビーに届きました。おすすめです！」",
+                r2: "「めちゃくちゃ早い！WAで連絡したら20分でチャングーのヴィラまで来てくれました。服もすごくいい香りです。」",
+                r3: "「6時間仕上げを利用しました。レスポンスが早く、ドライバーも親切。ヴィラから一歩も出ずに完結しました。」",
+                r4: "「旅行者の強い味方！明朗会計で配達料の隠れ systemic 費用もありませんでした。次回も絶対使います！」",
+                info: "📍 <strong>対応エリア:</strong> クタ、レギャン、スミニャック、チャングー、ベラワ、ウマラス、クロボカン、サヌール、デンパサール<br>⏰ <strong>営業時間:</strong> 07:00 - 22:00 WITA",
+                btn: "今すぐ WhatsApp で注文する",
+                waMsg: "こんにちは、エクスプレスランドリーを注文したいです"
+            }
+        };
+
+        const phone = "6281234567890"; // Ganti dengan nomor WA bisnis kamu
+
+        function setLang(lang) {
+            const data = translations[lang];
+            
+            // Toggle active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update Text Content
+            document.getElementById('txt-status').innerText = data.status;
+            document.getElementById('txt-sub').innerText = data.sub;
+            document.getElementById('txt-price-title').innerText = data.priceTitle;
+            document.getElementById('txt-popular').innerText = data.popular;
+            document.getElementById('t-p1').innerText = data.p1;
+            document.getElementById('t-p2').innerText = data.p2;
+            document.getElementById('t-p3').innerText = data.p3;
+            document.getElementById('t-p4').innerText = data.p4;
+            document.getElementById('txt-step-title').innerText = data.stepTitle;
+            document.getElementById('t-s1').innerHTML = data.s1;
+            document.getElementById('t-s2').innerHTML = data.s2;
+            document.getElementById('t-s3').innerHTML = data.s3;
+            document.getElementById('t-s4').innerHTML = data.s4;
+            document.getElementById('txt-rev-title').innerText = data.revTitle;
+            document.getElementById('t-r1').innerText = data.r1;
+            document.getElementById('t-r2').innerText = data.r2;
+            document.getElementById('t-r3').innerText = data.r3;
+            document.getElementById('t-r4').innerText = data.r4;
+            document.getElementById('txt-info').innerHTML = data.info;
+            document.getElementById('txt-btn').innerText = data.btn;
+
+            // Update WA Link Text Dynamic
+            document.getElementById('btn-wa-link').href = `https://wa.me/${phone}?text=${data.waMsg}`;
+        }
+    </script>
 </body>
 </html>
