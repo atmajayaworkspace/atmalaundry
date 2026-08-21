@@ -38,6 +38,7 @@
             color: var(--dark);
             line-height: 1.6;
             padding-bottom: 90px;
+            overflow-x: hidden;
         }
 
         /* Top Navigation */
@@ -115,6 +116,16 @@
             gap: 15px;
         }
 
+        /* Hamburger Button */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
         .lang-wrapper {
             display: flex;
             align-items: center;
@@ -164,6 +175,27 @@
             background: var(--surface);
             color: var(--primary);
             box-shadow: var(--shadow-sm);
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 20px;
+            gap: 12px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu .nav-link {
+            text-align: left;
+            padding: 8px 0;
+            font-size: 1rem;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         /* Page Container System */
@@ -683,6 +715,30 @@
             border-top: 1px solid var(--border);
             background: var(--surface);
         }
+
+        /* RESPONSIVE MEDIA QUERY UNTUK HP */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Sembunyikan menu desktop standar di HP */
+            }
+            .hamburger-btn {
+                display: block; /* Munculkan tombol hamburger */
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero-text h1 {
+                font-size: 2.1rem;
+            }
+            .floating-card {
+                left: 10px;
+                bottom: -15px;
+            }
+            .lang-label {
+                display: none; /* Sembunyikan label "Language" di layar kecil biar muat */
+            }
+        }
     </style>
 </head>
 <body>
@@ -696,23 +752,35 @@
                 <div class="logo-text">U-CLEAN <span>BALI</span></div>
             </div>
 
+            <!-- Desktop Menu -->
             <nav class="nav-menu">
                 <button class="nav-link active-tab" id="tab-home" onclick="switchPage('home')">Home</button>
                 <button class="nav-link" id="tab-work" onclick="switchPage('work')">How It Works</button>
                 <button class="nav-link" id="tab-loc" onclick="switchPage('loc')">Locations</button>
                 <button class="nav-link" id="tab-help" onclick="switchPage('help')">Help / FAQ</button>
             </nav>
+
             <div class="nav-right">
                 <div class="lang-wrapper">
                     <span class="lang-label">Language</span>
                     <div class="lang-picker">
-                        <button class="lang-btn active" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English"> English</button>
-                        <button class="lang-btn" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="Indonesia"> Indonesia</button>
+                        <button class="lang-btn active" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English"> EN</button>
+                        <button class="lang-btn" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="Indonesia"> ID</button>
                         <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="Chinese"> 中文</button>
                         <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese"> 日本語</button>
                     </div>
                 </div>
+                <!-- Tombol Hamburger untuk HP -->
+                <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
+        </div>
+
+        <!-- Menu Dropdown Mobile -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="nav-link active-tab" id="mob-tab-home" onclick="switchPage('home'); toggleMobileMenu();">Home</button>
+            <button class="nav-link" id="mob-tab-work" onclick="switchPage('work'); toggleMobileMenu();">How It Works</button>
+            <button class="nav-link" id="mob-tab-loc" onclick="switchPage('loc'); toggleMobileMenu();">Locations</button>
+            <button class="nav-link" id="mob-tab-help" onclick="switchPage('help'); toggleMobileMenu();">Help / FAQ</button>
         </div>
     </header>
 
@@ -1084,12 +1152,21 @@
             { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" }
         ];
 
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active-page'));
             document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active-tab'));
             
             document.getElementById('page-' + pageId).classList.add('active-page');
-            document.getElementById('tab-' + pageId).classList.add('active-tab');
+            
+            // Tandai aktif untuk desktop & mobile menu
+            if(document.getElementById('tab-' + pageId)) document.getElementById('tab-' + pageId).classList.add('active-tab');
+            if(document.getElementById('mob-tab-' + pageId)) document.getElementById('mob-tab-' + pageId).classList.add('active-tab');
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
