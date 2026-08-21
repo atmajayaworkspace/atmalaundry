@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Laundry Bali | Fast Wash & Free Pickup</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --border: #e5e5e5;
+            --accent: #25D366; /* WA Green */
+            --card-bg: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding-bottom: 90px;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 0 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .sub-header {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 28px 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Price List */
+        .price-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .service-time {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .price-tag {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Steps / How it works */
+        .steps-list {
+            list-style: none;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: var(--text);
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text {
+            font-size: 0.9rem;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .review-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            background: #fff;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .review-text {
+            font-size: 0.875rem;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .reviewer {
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* Coverage & Info */
+        .info-box {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #444;
+            margin-top: 20px;
+        }
+
+        /* Sticky CTA Button */
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid var(--border);
+            padding: 12px 16px;
+            z-index: 100;
+        }
+
+        .btn-wa {
+            display: block;
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-wa:active {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>BALI LAUNDRY EXPRESS</h1>
+            <div class="sub-header">Free Pick Up & Delivery • Canggu, Seminyak, Kuta, Sanur, Denpasar</div>
+        </header>
+
+        <!-- Price List -->
+        <div class="section-title">
+            <span>Daftar Harga / Price List</span>
+            <span style="font-size: 0.75rem; font-weight: normal; color: var(--muted);">(Per Kg)</span>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card">
+                <div>
+                    <div class="service-name">Super Express</div>
+                    <div class="service-time">2 Jam Selesai / 2-Hour Service</div>
+                </div>
+                <div class="price-tag">Rp 50k</div>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="service-name">Fast Express</div>
+                    <div class="service-time">6 Jam Selesai / 6-Hour Service</div>
+                </div>
+                <div class="price-tag">Rp 35k</div>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="service-name">Same Day</div>
+                    <div class="service-time">12 Jam Selesai / 12-Hour Service</div>
+                </div>
+                <div class="price-tag">Rp 25k</div>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="service-name">Reguler</div>
+                    <div class="service-time">24 Jam Selesai / 24-Hour Service</div>
+                </div>
+                <div class="price-tag">Rp 15k</div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="section-title">
+            <span>Cara Order / How It Works</span>
+        </div>
+
+        <ul class="steps-list">
+            <li class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-text"><strong>Send Location:</strong> Klik tombol WA di bawah, kirim lokasi villa/hotel & pilihan paket.</div>
+            </li>
+            <li class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-text"><strong>Pickup:</strong> Driver langsung meluncur jemput cucian kamu.</div>
+            </li>
+            <li class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-text"><strong>Wash & Iron:</strong> Dicuci terpisah per customer, wangi, & disetrika rapi.</div>
+            </li>
+            <li class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-text"><strong>Delivery:</strong> Diantar kembali tepat waktu sesuai paket pilihan.</div>
+            </li>
+        </ul>
+
+        <!-- Human-like Reviews -->
+        <div class="section-title">
+            <span>Ulasan Pelanggan / Reviews</span>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"</div>
+                <div class="reviewer">Dion R. — ★ Verified Customer</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Super fast service! Messaged them on WA, driver came to my villa in Canggu 20 mins later. Clothes smell fresh and folded nicely. Tq guys!"</div>
+                <div class="reviewer">Liam M. — Australia</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."</div>
+                <div class="reviewer">Putu S. — Seminyak</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use again next time in Bali."</div>
+                <div class="reviewer">Clara & Alex — Germany</div>
+            </div>
+        </div>
+
+        <!-- Operational Info -->
+        <div class="info-box">
+            📍 <strong>Area Layanan:</strong> Kuta, Legian, Seminyak, Canggu, Berawa, Umalas, Kerobokan, Sanur & Denpasar.<br>
+            ⏰ <strong>Jam Operasional:</strong> Buka Setiap Hari (07.00 - 22.00 WITA)
+        </div>
+    </div>
+
+    <!-- Sticky Floating WA Button -->
+    <div class="sticky-footer">
+        <!-- GANTI NOMOR DI BAWAH (format 62...) -->
+        <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20mau%20order%20laundry%20express" class="btn-wa" target="_blank">
+            💬 Order Via WhatsApp
+        </a>
+    </div>
+
+</body>
+</html>
