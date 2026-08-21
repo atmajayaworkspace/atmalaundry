@@ -88,6 +88,16 @@
             cursor: pointer;
             color: var(--text-muted);
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-btn img {
+            width: 18px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .lang-btn.active {
@@ -294,16 +304,25 @@
         }
 
         .price-card .price {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 16px;
+            line-height: 1.1;
         }
 
-        .price-card .price span {
-            font-size: 0.875rem;
+        .price-card .price .unit {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .price-card .price .lbs {
+            display: block;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: 600;
+            margin-top: 4px;
         }
 
         /* Steps */
@@ -345,37 +364,71 @@
             color: var(--text-muted);
         }
 
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+        /* Review Marquee (Slideshow Berjalan) */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            background: var(--light);
         }
 
-        .gallery-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border);
+        .marquee-container::before, .marquee-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            z-index: 2;
         }
 
-        /* Dynamic Random Review Banner */
-        .featured-review-card {
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--light), transparent);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--light), transparent);
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 20px;
+            padding-left: 20px;
+            animation: scroll 40s linear infinite; /* Kecepatan animasi dipercepat dikit biar dinamis */
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-card {
+            width: 340px;
+            white-space: normal;
             background: var(--surface);
-            border: 2px solid var(--primary);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            flex-shrink: 0;
             box-shadow: var(--shadow-sm);
-            margin-bottom: 30px;
+            cursor: default;
         }
 
-        .featured-review-card p {
-            font-size: 1.1rem;
-            font-style: italic;
+        .marquee-card p {
+            font-size: 0.95rem;
             color: #334155;
-            margin: 10px 0;
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 10px)); }
         }
 
         /* Modal Styles */
@@ -437,38 +490,6 @@
 
         .modal-wa-btn:hover {
             background: var(--accent-hover);
-        }
-
-        /* Reviews Grid */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .review-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 20px;
-        }
-
-        .stars {
-            color: #f59e0b;
-            margin-bottom: 8px;
-        }
-
-        .review-card p {
-            font-size: 0.9rem;
-            color: #334155;
-            font-style: italic;
-            margin-bottom: 12px;
-        }
-
-        .reviewer-info {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
         }
 
         /* Coverage Box */
@@ -571,10 +592,10 @@
                 🌴 U-CLEAN BALI
             </div>
             <div class="lang-picker">
-                <button class="lang-btn active" onclick="setLang('id')">🇮🇩 ID</button>
-                <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
-                <button class="lang-btn" onclick="setLang('zh')">🇨🇳 CN</button>
-                <button class="lang-btn" onclick="setLang('ja')">🇯🇵 JP</button>
+                <button class="lang-btn active" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="ID"> ID</button>
+                <button class="lang-btn" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN</button>
+                <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="CN"> CN</button>
+                <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="JP"> JP</button>
             </div>
         </div>
     </header>
@@ -644,46 +665,45 @@
             <p id="txt-price-sub">Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)</p>
         </div>
         
-        <!-- NEW 5-CARD PRICING GRID -->
         <div class="pricing-grid">
             <!-- Ultra Express 2-Hour -->
-            <div class="price-card featured" onclick="openModal('Ultra Express 2-Hour', '2 Jam Selesai / 2-Hour Ultra Express', 'Rp 60k / Kg', 'Cuci kilat higienis 2 jam langsung disetrika rapi & siap dikirim kembali. *Minimum order 2 kg.')">
+            <div class="price-card featured" onclick="openModal('Ultra Express 2-Hour', '2 Jam Selesai / 2-Hour Ultra Express', 'Rp 60.000 / Kg', 'Cuci kilat higienis 2 jam langsung disetrika rapi & siap dikirim kembali. *Minimum order 2 kg.')">
                 <div class="tag-popular" id="txt-pop">Paling Laris</div>
                 <h3>Ultra Express</h3>
                 <div class="time-info" id="p-t1">2 Jam Selesai / 2-Hour Ultra Express</div>
-                <div class="price">Rp 60k <span>/ Kg</span></div>
+                <div class="price">Rp 60.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                 <p id="p-p1" style="font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin-bottom:0;">*Minimum order 2 kg</p>
             </div>
             
             <!-- Express 3-Hour -->
-            <div class="price-card" onclick="openModal('Express 3-Hour', '3 Jam Selesai / 3-Hour Service', 'Rp 50k / Kg', 'Layanan cepat 3 jam selesai, dicuci terpisah per pelanggan dan wangi tahan lama. *Minimum order 2.2 kg.')">
+            <div class="price-card" onclick="openModal('Express 3-Hour', '3 Jam Selesai / 3-Hour Service', 'Rp 50.000 / Kg', 'Layanan cepat 3 jam selesai, dicuci terpisah per pelanggan dan wangi tahan lama. *Minimum order 2.2 kg.')">
                 <h3>Express 3-Hour</h3>
                 <div class="time-info" id="p-t2">3 Jam Selesai / 3-Hour Service</div>
-                <div class="price">Rp 50k <span>/ Kg</span></div>
+                <div class="price">Rp 50.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                 <p id="p-p2" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 2.2 kg</p>
             </div>
             
             <!-- Express 6-Hour -->
-            <div class="price-card" onclick="openModal('Express 6-Hour', '6 Jam Selesai / 6-Hour Service', 'Rp 40k / Kg', 'Selesai dalam 6 jam, diproses higienis dan diantar tepat waktu. *Minimum order 3 kg.')">
+            <div class="price-card" onclick="openModal('Express 6-Hour', '6 Jam Selesai / 6-Hour Service', 'Rp 40.000 / Kg', 'Selesai dalam 6 jam, diproses higienis dan diantar tepat waktu. *Minimum order 3 kg.')">
                 <h3>Express 6-Hour</h3>
                 <div class="time-info" id="p-t3">6 Jam Selesai / 6-Hour Service</div>
-                <div class="price">Rp 40k <span>/ Kg</span></div>
+                <div class="price">Rp 40.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                 <p id="p-p3" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3 kg</p>
             </div>
             
             <!-- Express 12-Hour -->
-            <div class="price-card" onclick="openModal('Express 12-Hour', '12 Jam Selesai / 12-Hour Service', 'Rp 30k / Kg', 'Layanan cuci 12 jam dengan kualitas hasil cuci dan setrika maksimal. *Minimum order 3.9 kg.')">
+            <div class="price-card" onclick="openModal('Express 12-Hour', '12 Jam Selesai / 12-Hour Service', 'Rp 30.000 / Kg', 'Layanan cuci 12 jam dengan kualitas hasil cuci dan setrika maksimal. *Minimum order 3.9 kg.')">
                 <h3>Express 12-Hour</h3>
                 <div class="time-info" id="p-t4">12 Jam Selesai / 12-Hour Service</div>
-                <div class="price">Rp 30k <span>/ Kg</span></div>
+                <div class="price">Rp 30.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                 <p id="p-p4" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3.9 kg</p>
             </div>
 
             <!-- Shoe 24-Hour -->
-            <div class="price-card" onclick="openModal('Shoe 24-Hour', '24 Jam Selesai / 24-Hour Shoe Cleaning', 'Rp 60k / Pasang', 'Layanan cuci sepatu premium selesai dalam 24 jam.')">
+            <div class="price-card" onclick="openModal('Shoe 24-Hour', '24 Jam Selesai / 24-Hour Shoe Cleaning', 'Rp 60.000 / Pasang', 'Layanan cuci sepatu premium selesai dalam 24 jam.')">
                 <h3>Shoe Service</h3>
                 <div class="time-info" id="p-t5">Cuci Sepatu 24 Jam / Shoe Wash</div>
-                <div class="price">Rp 60k <span>/ Pasang</span></div>
+                <div class="price">Rp 60.000 <span class="unit">/ Pasang</span><span class="lbs">/ Pair</span></div>
                 <p id="p-p5" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">Layanan premium sepatu</p>
             </div>
         </div>
@@ -719,54 +739,16 @@
         </div>
     </section>
 
-    <!-- Visual Gallery -->
-    <section class="section">
-        <div class="section-header">
-            <h2 id="txt-gal-head">Galeri Operasional</h2>
-            <p id="txt-gal-sub">Kebersihan & kerapian pakaian Anda adalah prioritas utama kami</p>
-        </div>
-        <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=500&q=80" alt="Clean Folded Clothes" class="gallery-img">
-            <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=500&q=80" alt="Washing Machine" class="gallery-img">
-            <img src="https://images.unsplash.com/photo-1489274495757-95c7c837b101?auto=format&fit=crop&w=500&q=80" alt="Ironing Service" class="gallery-img">
-            <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=500&q=80" alt="Fresh Laundry" class="gallery-img">
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="section">
+    <!-- Reviews Marquee (Slideshow Banyak Ulasan Internasional) -->
+    <section class="section" style="max-width: 100%; padding: 60px 0;">
         <div class="section-header">
             <h2 id="txt-rev-head">Ulasan Pelanggan</h2>
             <p id="txt-rev-sub">Apa kata turis & lokal tentang layanan kami</p>
         </div>
 
-        <!-- Dynamic Featured Review (Berganti saat Refresh) -->
-        <div class="featured-review-card">
-            <div class="stars">★★★★★</div>
-            <p id="dynamic-review-text">Memuat ulasan favorit...</p>
-            <div class="reviewer-info" id="dynamic-review-author">Verified Customer</div>
-        </div>
-
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p id="r-t1">"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"</p>
-                <div class="reviewer-info">Dion R. — ★ Verified Customer</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p id="r-t2">"Super fast service! Messaged them on WA, driver came to my villa in Sanur 20 mins later. Clothes smell fresh and folded nicely. Tq U-Clean!"</p>
-                <div class="reviewer-info">Liam M. — Australia</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p id="r-t3">"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."</p>
-                <div class="reviewer-info">Putu S. — Sanur Kauh</div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p id="r-t4">"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use U-Clean again next time in Bali."</p>
-                <div class="reviewer-info">Clara & Alex — Germany</div>
+        <div class="marquee-container">
+            <div class="marquee-track" id="marqueeTrack">
+                <!-- Data Review akan di-generate otomatis oleh Javascript di bawah -->
             </div>
         </div>
     </section>
@@ -838,7 +820,6 @@
                 priceHead: "Daftar Harga Service", priceSub: "Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)",
                 pop: "Paling Laris",
                 
-                // NEW TRANSLATIONS FOR PRICING
                 pt1: "2 Jam Selesai", pt2: "3 Jam Selesai", pt3: "6 Jam Selesai", pt4: "12 Jam Selesai", pt5: "Sepatu 24 Jam",
                 pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Layanan cuci sepatu premium",
                 
@@ -847,12 +828,7 @@
                 sh2: "Driver Jemput", sp2: "Kurir kami menjemput pakaian kotor langsung ke lobby/villa.",
                 sh3: "Proses Cuci", sp3: "Dicuci terpisah, disetrika rapi, & dibungkus higienis.",
                 sh4: "Diantar Kembali", sp4: "Baju bersih diantar tepat waktu sesuai paket pilihan Anda.",
-                galHead: "Galeri Operasional", galSub: "Kebersihan & kerapian pakaian Anda adalah prioritas utama kami",
                 revHead: "Ulasan Pelanggan", revSub: "Apa kata turis & lokal tentang layanan U-Clean",
-                rt1: '"Penyelamat bgt pas mau checkout hotel jam 2 siang tp baju msh numpuk. Ambil yg 2 jam, jam 12 udah sampe lg di lobby. Recommended bgt!"',
-                rt2: '"Super fast service! Messaged them on WA, driver came to my villa in Sanur 20 mins later. Clothes smell fresh and folded nicely. Tq U-Clean!"',
-                rt3: '"Layanan 6 jamnya mantap, fast respon adminnya. Driver jg ramah. Ga perlu repot keluar villa."',
-                rt4: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use U-Clean again next time in Bali."',
                 covHead: "Area Antar Jemput Gratis", covSub: "Driver U-Clean siap meluncur ke Hotel, Villa, dan Homestay di wilayah Bali berikut:",
                 ctaBtn: "Pesan Via WhatsApp Sekarang",
                 waMsg: "Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express"
@@ -878,12 +854,7 @@
                 sh2: "Driver Collects", sp2: "Our driver collects your laundry directly from your lobby or villa.",
                 sh3: "Wash & Iron", sp3: "Washed separately, neatly ironed, & hygienically packed.",
                 sh4: "Delivered Back", sp4: "Fresh clothes delivered back on time right to your door.",
-                galHead: "Operational Gallery", galSub: "Your clothes cleanliness and care are our top priority",
                 revHead: "Customer Reviews", revSub: "What tourists & locals say about U-Clean service",
-                rt1: '"Lifesaver! Needed my clothes done before 2 PM checkout. Picked the 2-hr service and got them back at 12 PM in the lobby. Highly recommended!"',
-                rt2: '"Super fast service! Messaged them on WA, driver came to my villa in Sanur 20 mins later. Clothes smell fresh and folded nicely. Tq U-Clean!"',
-                rt3: '"Awesome 6-hr express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."',
-                rt4: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Definitely will use U-Clean again next time in Bali."',
                 covHead: "Free Pickup & Delivery Area", covSub: "Our U-Clean drivers are ready to head to Hotels, Villas, and Homestays in:",
                 ctaBtn: "Order Via WhatsApp Now",
                 waMsg: "Hello%20U-Clean%20Admin,%20I%20would%20like%20to%20order%20express%20laundry"
@@ -909,12 +880,7 @@
                 sh2: "司机取件", sp2: "司机直接前往您的酒店大堂或别墅收取衣物。",
                 sh3: "专业洗烫", sp3: "单独清洗、整烫整洁并进行卫生打包。",
                 sh4: "按时送回", sp4: "洗净的衣物按时送还至您的住所。",
-                galHead: "服务实拍", galSub: "衣物的干净与整洁是我们的核心追求",
                 revHead: "客户评价", revSub: "听听游客与本地人对 U-Clean 的真实评价",
-                rt1: "“救命稻草！下午2点退房前急需洗衣服，选了2小时特快，中午12点就送到了大堂，强烈推荐！”",
-                rt2: "“超快！在WA上发消息，20分钟后司机就到了沙努尔的别墅。衣服很香，叠得很整齐。”",
-                rt3: "“6小时特快服务很棒，客服回复快，司机很友好，完全不用出门。”",
-                rt4: "“旅行者的救星！价格透明，没有任何隐藏送货费。下次来巴厘岛还会再选择 U-Clean。”",
                 covHead: "免费派送覆盖区域", covSub: "我们的 U-Clean 司机随时准备前往以下区域的酒店、别墅与民宿：",
                 ctaBtn: "立即通过 WhatsApp 预订",
                 waMsg: "你好U-Clean，我想预订快洗洗衣服务"
@@ -940,12 +906,7 @@
                 sh2: "無料集荷", sp2: "ドライバーがヴィラやロビーまで集荷に伺います。",
                 sh3: "洗濯＆アイロン", sp3: "個別洗濯し、綺麗にアイロン掛け＆パッキング。",
                 sh4: "お届け", sp4: "指定の時間にお部屋までお届けします。",
-                galHead: "ギャラリー", galSub: "お客様の衣類を丁寧に、清潔にお trip 仕上げます",
-                revHead: "お客様の声", revSub: "実際に利用されたお客様のレビュー",
-                rt1: "「14時のチェックアウト前に洗濯が完了して本当に助かりました！2時間仕上げで12時には届きました！」",
-                rt2: "「めちゃくちゃ早い！連絡したら20分でサヌールのヴィラまで来てくれました。仕上がりも大満足。」",
-                rt3: "「6時間仕上げを利用。ヴィラから一歩も出ずに完結するので本当に楽です。」",
-                rt4: "「旅行者に最高のサービス！隠れた費用もなく明朗会計でした。次回バリ島に来た時も絶対U-Cleanを使います！」",
+                revHead: "客户评价", revSub: "実際に利用されたお客様のレビュー",
                 covHead: "無料対応エリア", covSub: "以下のエリアのホテル、ヴィラ、ホームステイへお伺いします：",
                 ctaBtn: "今すぐ WhatsApp で注文する",
                 waMsg: "こんにちはU-Clean、エクスプレスランドリーを注文したいです"
@@ -954,23 +915,36 @@
 
         const phone = "6281234567890"; // Ganti nomor WA bisnis kamu disini
 
-        // Dynamic Random Reviews Array
-        const randomReviews = [
-            { text: '"Sangat cepat! Pakaian kotor habis trekking langsung bersih lagi dalam 2 jam. U-Clean benar-benar penyelamat liburan!"', author: "Mark — Australia" },
-            { text: '"Pelayanan U-Clean terbaik di area Sanur & Canggu. Staf ramah, kurir tepat waktu, dan wangi bajunya awet banget."', author: "Yuki — Jepang" },
-            { text: '"Sistem pemesanannya canggih, pesan via WA langsung dijemput driver ke villa. Sangat efisien."', author: "Sarah — UK" },
-            { text: '"Harga sangat masuk akal untuk kualitas bintang lima. Pasti jadi langganan tetap U-Clean kalau ke Bali lagi."', author: "David — USA" },
-            { text: '"Luar biasa! Benar-benar menyelamatkan liburan saya saat kehabisan baju bersih karena koper terselip."', author: "Elena — Spanyol" },
-            { text: '"Prosesnya transparan, ada notifikasi progres laundry-nya masuk ke WA. Super recommended U-Clean!"', author: "Thomas — Germany" },
-            { text: '"Cepat, rapi, dan wanginya tahan berhari-hari meskipun dipakai panas-panasan di pantai."', author: "Jessica — Singapore" }
+        // Daftar Ulasan Internasional Melimpah (EN, ID, RU, CN, JP, ES, FR, DE)
+        const reviewList = [
+            { text: '"Super fast service! Messaged them on WA, driver came to my villa 20 mins later. Highly recommended!"', author: "Liam" },
+            { text: '"Sangat cepat! Pakaian kotor habis trekking langsung bersih lagi dalam 2 jam. Penyelamat liburan!"', author: "Budi" },
+            { text: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Will absolutely use again."', author: "Clara" },
+            { text: '"Отличный сервис! Забрали вещи из отеля и вернули чистыми через 2 часа. Рекомендую!"', author: "Anastasia" },
+            { text: '"Best laundry in Sanur. My clothes smell amazing and folded perfectly. 5 stars!"', author: "Sarah" },
+            { text: '"非常高效的洗衣服务！在WA上预订很方便，而且衣服洗得特别干净。"', author: "Wei Chen" },
+            { text: '"Kurirnya sangat sopan dan tepat waktu. Wanginya juga premium, tidak seperti laundry biasa."', author: "Anita" },
+            { text: '"Awesome express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."', author: "David" },
+            { text: '"対応がとても早くて助かりました。ホテルまで無料で取りに来てくれるのも便利です！"', author: "Yuki" },
+            { text: '"Mudah banget pesannya, cuma kirim WA. Gak perlu repot isi form panjang lebar, driver langsung jemput."', author: "Putri" },
+            { text: '"¡Increíble! Lavaron mi ropa en 2 horas justo antes de ir al aeropuerto. Gracias U-Clean."', author: "Carlos" },
+            { text: '"Sepatu putih kesayangan saya dicuci bersih banget kayak baru beli. Layanan cuci sepatunya juara!"', author: "Kevin" },
+            { text: '"Fast, reliable, and my clothes have never smelled this fresh. Thank you U-Clean team!"', author: "Michael" },
+            { text: '"Awalnya ragu coba cuci 2 jam, ternyata beneran selesai dan kering sempurna! Wow banget pelayanannya!"', author: "Linda" },
+            { text: '"Super service rapide ! Vêtements propres et parfumés reçus en un temps record à ma villa."', author: "Antoine" },
+            { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" },
+            { text: '"Очень удобно! Написал в WhatsApp, забрали из отеля в Чангу и привезли обратно идеальным."', author: "Dmitry" },
+            { text: '"服务态度非常好，洗完的衣服叠得整整齐齐，还带有淡淡的清香。赞！"', author: "Xiao Mei" },
+            { text: '"バリ島で一番お気に入りのランドリーです。対応が丁寧で仕上がりも完璧。"', author: "Kenji" },
+            { text: '"Amazing quality and super quick turnaround. Best laundry experience in Bali so far!"', author: "Jessica" }
         ];
 
         function setLang(lang) {
             const data = translations[lang];
             
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            if(event && event.target) {
-                event.target.classList.add('active');
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
             }
 
             document.getElementById('txt-status').innerText = data.status;
@@ -988,7 +962,6 @@
             document.getElementById('txt-price-sub').innerText = data.priceSub;
             document.getElementById('txt-pop').innerText = data.pop;
             
-            // Assign new Pricing values
             document.getElementById('p-t1').innerText = data.pt1;
             document.getElementById('p-t2').innerText = data.pt2;
             document.getElementById('p-t3').innerText = data.pt3;
@@ -1008,15 +981,8 @@
             document.getElementById('s-h3').innerText = data.sh3; document.getElementById('s-p3').innerText = data.sp3;
             document.getElementById('s-h4').innerText = data.sh4; document.getElementById('s-p4').innerText = data.sp4;
 
-            document.getElementById('txt-gal-head').innerText = data.galHead;
-            document.getElementById('txt-gal-sub').innerText = data.galSub;
-
             document.getElementById('txt-rev-head').innerText = data.revHead;
             document.getElementById('txt-rev-sub').innerText = data.revSub;
-            document.getElementById('r-t1').innerText = data.rt1;
-            document.getElementById('r-t2').innerText = data.rt2;
-            document.getElementById('r-t3').innerText = data.rt3;
-            document.getElementById('r-t4').innerText = data.rt4;
 
             document.getElementById('txt-cov-head').innerText = data.covHead;
             document.getElementById('txt-cov-sub').innerText = data.covSub;
@@ -1042,11 +1008,25 @@
             document.getElementById('packageModal').style.display = 'none';
         }
 
-        // Random Review Generator on Refresh
-        function loadRandomReview() {
-            const index = Math.floor(Math.random() * randomReviews.length);
-            document.getElementById('dynamic-review-text').innerText = randomReviews[index].text;
-            document.getElementById('dynamic-review-author').innerText = randomReviews[index].author;
+        // Generate Marquee Reviews
+        function initMarquee() {
+            const track = document.getElementById('marqueeTrack');
+            let reviewHTML = '';
+            
+            // Loop data array untuk membuat kotak HTML ulasan
+            reviewList.forEach(r => {
+                reviewHTML += `
+                    <div class="marquee-card">
+                        <div class="stars" style="color: #f59e0b; margin-bottom: 8px;">★★★★★</div>
+                        <p>${r.text}</p>
+                        <div class="reviewer-info" style="font-weight: 700; color: #64748b; font-size: 0.85rem;">
+                            ${r.author} — <span style="color: #22c55e;">✔ Verified</span>
+                        </div>
+                    </div>`;
+            });
+            
+            // Gandakan HTML 2 kali supaya efek infinite loop-nya mulus dan tidak patah
+            track.innerHTML = reviewHTML + reviewHTML;
         }
 
         // Close Modal when clicking outside box
@@ -1059,7 +1039,7 @@
 
         // Initialize Page
         window.onload = function() {
-            loadRandomReview();
+            initMarquee();
         };
     </script>
 </body>
