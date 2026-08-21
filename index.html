@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,14 +44,14 @@
         header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
         }
 
         .nav-container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
             padding: 14px 20px;
             display: flex;
@@ -67,6 +67,47 @@
             align-items: center;
             gap: 8px;
             letter-spacing: -0.5px;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-link {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active-tab {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .lang-picker {
@@ -104,6 +145,21 @@
             background: var(--surface);
             color: var(--primary);
             box-shadow: var(--shadow-sm);
+        }
+
+        /* Page Container System */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active-page {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Hero Section */
@@ -364,7 +420,7 @@
             color: var(--text-muted);
         }
 
-        /* Review Marquee (Slideshow Berjalan) */
+        /* Review Marquee */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
@@ -399,7 +455,7 @@
             display: inline-flex;
             gap: 20px;
             padding-left: 20px;
-            animation: scroll 40s linear infinite; /* Kecepatan animasi dipercepat dikit biar dinamis */
+            animation: scroll 40s linear infinite;
         }
 
         .marquee-track:hover {
@@ -415,7 +471,6 @@
             padding: 24px;
             flex-shrink: 0;
             box-shadow: var(--shadow-sm);
-            cursor: default;
         }
 
         .marquee-card p {
@@ -429,6 +484,35 @@
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-50% - 10px)); }
+        }
+
+        /* FAQ / Help Accordion Style */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
         /* Modal Styles */
@@ -527,7 +611,6 @@
             font-size: 0.85rem;
         }
 
-        /* Location Info Box */
         .location-info {
             margin-top: 25px;
             padding-top: 20px;
@@ -588,193 +671,250 @@
     <!-- Top Navigation -->
     <header>
         <div class="nav-container">
-            <div class="logo">
+            <div class="logo" onclick="switchPage('home')">
                 🌴 U-CLEAN BALI
             </div>
-            <div class="lang-picker">
-                <button class="lang-btn active" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="ID"> ID</button>
-                <button class="lang-btn" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN</button>
-                <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="CN"> CN</button>
-                <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="JP"> JP</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="badge-pill" style="margin-bottom: 16px; width: fit-content;">
-                    <span style="color:#22c55e;">●</span> <span id="txt-status">Driver Instant Pickup Ready</span>
-                </div>
-                <h1 id="txt-hero-title">Express Laundry <span>2 Hours Finished</span> in Bali</h1>
-                <p id="txt-hero-sub">Free pick-up and delivery directly to your Hotel, Villa, or Resort in Sanur, Canggu, Seminyak, Kuta & Denpasar.</p>
-                <div class="hero-badges">
-                    <div class="badge-pill">🛵 Free Pickup & Delivery</div>
-                    <div class="badge-pill">🧼 Hygienic Wash</div>
-                    <div class="badge-pill">⚡ 2-Hour Express</div>
-                </div>
-            </div>
-            <div class="hero-img-box">
-                <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80" alt="U-Clean Laundry Service" class="hero-img">
-                <div class="floating-card">
-                    <span style="font-size: 1.5rem;">⭐️ 4.9/5</span>
-                    <div>
-                        <strong style="font-size: 0.85rem; display:block;">500+ Tourist Reviews</strong>
-                        <span style="font-size: 0.75rem; color: var(--text-muted);">Trusted Express Service</span>
+            <nav class="nav-menu">
+                <button class="nav-link active-tab" id="tab-home" onclick="switchPage('home')">Home</button>
+                <button class="nav-link" id="tab-work" onclick="switchPage('work')">How It Works</button>
+                <button class="nav-link" id="tab-loc" onclick="switchPage('loc')">Locations</button>
+                <button class="nav-link" id="tab-help" onclick="switchPage('help')">Help / FAQ</button>
+            </nav>
+            <div class="nav-right">
+                <div class="lang-wrapper">
+                    <span class="lang-label">Language</span>
+                    <div class="lang-picker">
+                        <button class="lang-btn active" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English"> English</button>
+                        <button class="lang-btn" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="Indonesia"> Indonesia</button>
+                        <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="Chinese"> 中文</button>
+                        <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese"> 日本語</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Features -->
-    <section class="section">
-        <div class="section-header">
-            <h2 id="txt-feat-head">Mengapa Memilih Kami?</h2>
-            <p id="txt-feat-sub">Layanan terpercaya untuk turis, expat, & lokal di Bali</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3 id="f-h1">Super Kilat 2 Jam</h3>
-                <p id="f-p1">Cucian siap dalam 2 jam. Cocok untuk Anda yang mau check-out atau penerbangan malam.</p>
+    <!-- PAGE 1: HOME -->
+    <div id="page-home" class="page-section active-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge-pill" style="margin-bottom: 16px; width: fit-content;">
+                        <span style="color:#22c55e;">●</span> <span id="txt-status">Driver Ready / Free Pickup Active</span>
+                    </div>
+                    <h1 id="txt-hero-title">Express Laundry <span>2 Hours Finished</span> in Bali</h1>
+                    <p id="txt-hero-sub">Free pick-up and delivery directly to your Hotel, Villa, or Resort in Sanur, Canggu, Seminyak, Kuta & Denpasar.</p>
+                    <div class="hero-badges">
+                        <div class="badge-pill">🛵 Free Pickup & Delivery</div>
+                        <div class="badge-pill">🧼 Hygienic Wash</div>
+                        <div class="badge-pill">⚡ 2-Hour Express</div>
+                    </div>
+                </div>
+                <div class="hero-img-box">
+                    <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80" alt="U-Clean Laundry Service" class="hero-img">
+                    <div class="floating-card">
+                        <span style="font-size: 1.5rem;">⭐️ 4.9/5</span>
+                        <div>
+                            <strong style="font-size: 0.85rem; display:block;">500+ Tourist Reviews</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Trusted Express Service</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚚</div>
-                <h3 id="f-h2">Gratis Antar Jemput</h3>
-                <p id="f-p2">Cukup kirim serlock lokasi Villa / Hotel Anda via WhatsApp, kurir kami langsung meluncur.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🧺</div>
-                <h3 id="f-h3">1 Mesin 1 Pelanggan</h3>
-                <p id="f-p3">Pakaian Anda dicuci terpisah dari pelanggan lain. Dijamin higienis, bersih, dan wangi.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💵</div>
-                <h3 id="f-h4">Harga Transparan</h3>
-                <p id="f-p4">Tidak ada biaya tersembunyi. Timbang dan bayar sesuai tarif per kilo resmi.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section class="section" id="pricing">
-        <div class="section-header">
-            <h2 id="txt-price-head">Daftar Harga / Price List</h2>
-            <p id="txt-price-sub">Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)</p>
-        </div>
-        
-        <div class="pricing-grid">
-            <!-- Ultra Express 2-Hour -->
-            <div class="price-card featured" onclick="openModal('Ultra Express 2-Hour', '2 Jam Selesai / 2-Hour Ultra Express', 'Rp 60.000 / Kg', 'Cuci kilat higienis 2 jam langsung disetrika rapi & siap dikirim kembali. *Minimum order 2 kg.')">
-                <div class="tag-popular" id="txt-pop">Paling Laris</div>
-                <h3>Ultra Express</h3>
-                <div class="time-info" id="p-t1">2 Jam Selesai / 2-Hour Ultra Express</div>
-                <div class="price">Rp 60.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
-                <p id="p-p1" style="font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin-bottom:0;">*Minimum order 2 kg</p>
+        <!-- Features -->
+        <section class="section">
+            <div class="section-header">
+                <h2 id="txt-feat-head">Why Choose U-Clean?</h2>
+                <p id="txt-feat-sub">Trusted laundry service for tourists, expats, & locals in Bali</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 id="f-h1">2-Hour Super Express</h3>
+                    <p id="f-p1">Ready in 2 hours. Perfect if you have an upcoming checkout or late flight.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3 id="f-h2">Free Pickup & Delivery</h3>
+                    <p id="f-p2">Just drop your Villa / Hotel pin location on WhatsApp, our driver comes right away.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧺</div>
+                    <h3 id="f-h3">1 Machine Per Customer</h3>
+                    <p id="f-p3">Washed separately from others. Guaranteed hygienic, clean, and fresh.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💵</div>
+                    <h3 id="f-h4">Transparent Pricing</h3>
+                    <p id="f-p4">No hidden delivery fees. Weighted and paid according to official rates.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="section" id="pricing">
+            <div class="section-header">
+                <h2 id="txt-price-head">Service Price List</h2>
+                <p id="txt-price-sub">Choose the speed that fits your travel schedule (Click for package details)</p>
             </div>
             
-            <!-- Express 3-Hour -->
-            <div class="price-card" onclick="openModal('Express 3-Hour', '3 Jam Selesai / 3-Hour Service', 'Rp 50.000 / Kg', 'Layanan cepat 3 jam selesai, dicuci terpisah per pelanggan dan wangi tahan lama. *Minimum order 2.2 kg.')">
-                <h3>Express 3-Hour</h3>
-                <div class="time-info" id="p-t2">3 Jam Selesai / 3-Hour Service</div>
-                <div class="price">Rp 50.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
-                <p id="p-p2" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 2.2 kg</p>
+            <div class="pricing-grid">
+                <!-- Ultra Express 2-Hour -->
+                <div class="price-card featured" onclick="openModal('Ultra Express 2-Hour', '2-Hour Ultra Express', 'Rp 60.000 / Kg', 'Hygienic express wash in 2 hours, neatly ironed and ready to be delivered back. *Minimum order 2 kg.')">
+                    <div class="tag-popular" id="txt-pop">Most Popular</div>
+                    <h3>Ultra Express</h3>
+                    <div class="time-info" id="p-t1">2-Hour Service</div>
+                    <div class="price">Rp 60.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
+                    <p id="p-p1" style="font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin-bottom:0;">*Minimum order 2 kg</p>
+                </div>
+                
+                <!-- Express 3-Hour -->
+                <div class="price-card" onclick="openModal('Express 3-Hour', '3-Hour Service', 'Rp 50.000 / Kg', 'Fast 3-hour service, washed separately per customer with long-lasting fragrance. *Minimum order 2.2 kg.')">
+                    <h3>Express 3-Hour</h3>
+                    <div class="time-info" id="p-t2">3-Hour Service</div>
+                    <div class="price">Rp 50.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
+                    <p id="p-p2" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 2.2 kg</p>
+                </div>
+                
+                <!-- Express 6-Hour -->
+                <div class="price-card" onclick="openModal('Express 6-Hour', '6-Hour Service', 'Rp 40.000 / Kg', 'Completed within 6 hours, processed hygienically and delivered on time. *Minimum order 3 kg.')">
+                    <h3>Express 6-Hour</h3>
+                    <div class="time-info" id="p-t3">6-Hour Service</div>
+                    <div class="price">Rp 40.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
+                    <p id="p-p3" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3 kg</p>
+                </div>
+                
+                <!-- Express 12-Hour -->
+                <div class="price-card" onclick="openModal('Express 12-Hour', '12-Hour Service', 'Rp 30.000 / Kg', '12-hour wash service with maximum washing and ironing quality. *Minimum order 3.9 kg.')">
+                    <h3>Express 12-Hour</h3>
+                    <div class="time-info" id="p-t4">12-Hour Service</div>
+                    <div class="price">Rp 30.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
+                    <p id="p-p4" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3.9 kg</p>
+                </div>
+
+                <!-- Shoe 24-Hour -->
+                <div class="price-card" onclick="openModal('Shoe 24-Hour', '24-Hour Shoe Cleaning', 'Rp 60.000 / Pair', 'Premium shoe cleaning service finished in 24 hours.')">
+                    <h3>Shoe Service</h3>
+                    <div class="time-info" id="p-t5">24-Hour Shoe Wash</div>
+                    <div class="price">Rp 60.000 <span class="unit">/ Pair</span><span class="lbs">/ Pair</span></div>
+                    <p id="p-p5" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">Premium shoe cleaning</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Marquee -->
+        <section class="section" style="max-width: 100%; padding: 60px 0;">
+            <div class="section-header">
+                <h2 id="txt-rev-head">Customer Reviews</h2>
+                <p id="txt-rev-sub">What tourists & locals say about U-Clean service</p>
+            </div>
+
+            <div class="marquee-container">
+                <div class="marquee-track" id="marqueeTrack"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 2: HOW IT WORKS -->
+    <div id="page-work" class="page-section">
+        <section class="section">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Easy 4-step process without creating an account</p>
+            </div>
+            <div class="steps-wrapper" style="margin-bottom: 40px;">
+                <div class="step-box">
+                    <div class="step-num">1</div>
+                    <h4 id="s-h1">Send WhatsApp</h4>
+                    <p id="s-p1">Click WhatsApp button below & send your villa/hotel location pin.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">2</div>
+                    <h4 id="s-h2">Driver Collects</h4>
+                    <p id="s-p2">Our driver collects your laundry directly from your lobby or villa.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">3</div>
+                    <h4 id="s-h3">Wash & Iron</h4>
+                    <p id="s-p3">Washed separately, neatly ironed, & hygienically packed.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-num">4</div>
+                    <h4 id="s-h4">Delivered Back</h4>
+                    <p id="s-p4">Fresh clothes delivered back on time right to your door.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; max-width: 700px; margin: 0 auto; background: var(--surface); padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=80" alt="Folded clothes" style="width:100%; height:220px; object-fit:cover; border-radius:var(--radius-md); margin-bottom:20px;">
+                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Highest Hygienic Standards</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Every piece of clothing is processed using eco-friendly premium detergents, exclusive long-lasting softeners, and professional steam ironing for zero creases.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 3: LOCATIONS -->
+    <div id="page-loc" class="page-section">
+        <section class="section">
+            <div class="section-header">
+                <h2>Our Coverage & Locations</h2>
+                <p>Serving all strategic tourism areas in Bali</p>
             </div>
             
-            <!-- Express 6-Hour -->
-            <div class="price-card" onclick="openModal('Express 6-Hour', '6 Jam Selesai / 6-Hour Service', 'Rp 40.000 / Kg', 'Selesai dalam 6 jam, diproses higienis dan diantar tepat waktu. *Minimum order 3 kg.')">
-                <h3>Express 6-Hour</h3>
-                <div class="time-info" id="p-t3">6 Jam Selesai / 6-Hour Service</div>
-                <div class="price">Rp 40.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
-                <p id="p-p3" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3 kg</p>
+            <div class="coverage-card" style="margin-bottom: 30px;">
+                <h3 id="txt-cov-head">Free Pickup & Delivery Area</h3>
+                <p id="txt-cov-sub">Our U-Clean drivers are ready to head to Hotels, Villas, and Homestays in:</p>
+                <div class="area-tags" style="margin-bottom: 20px;">
+                    <span class="area-tag">📍 Sanur</span>
+                    <span class="area-tag">📍 Sanur Kauh</span>
+                    <span class="area-tag">📍 Denpasar Selatan</span>
+                    <span class="area-tag">📍 Canggu</span>
+                    <span class="area-tag">📍 Seminyak</span>
+                    <span class="area-tag">📍 Kuta</span>
+                    <span class="area-tag">📍 Legian</span>
+                    <span class="area-tag">📍 Berawa</span>
+                    <span class="area-tag">📍 Kerobokan</span>
+                </div>
+                <div class="location-info">
+                    <strong>🏠 Main Outlet Store:</strong><br>
+                    Jl. Danau Poso, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali<br>
+                    <span style="display:inline-block; margin-top:8px; color: var(--accent);">● Open 24 Hours</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 4: HELP / FAQ -->
+    <div id="page-help" class="page-section">
+        <section class="section">
+            <div class="section-header">
+                <h2>Help Center & FAQ</h2>
+                <p>Frequently asked questions about U-Clean Bali services</p>
             </div>
             
-            <!-- Express 12-Hour -->
-            <div class="price-card" onclick="openModal('Express 12-Hour', '12 Jam Selesai / 12-Hour Service', 'Rp 30.000 / Kg', 'Layanan cuci 12 jam dengan kualitas hasil cuci dan setrika maksimal. *Minimum order 3.9 kg.')">
-                <h3>Express 12-Hour</h3>
-                <div class="time-info" id="p-t4">12 Jam Selesai / 12-Hour Service</div>
-                <div class="price">Rp 30.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
-                <p id="p-p4" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3.9 kg</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h4>How do I place a laundry order?</h4>
+                    <p>It is very easy! Simply click the WhatsApp button on this page, send your villa or hotel share-location pin, and our courier will come right away to pick it up.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Are my clothes washed with other people's clothes?</h4>
+                    <p>Not at all. We implement a strict **1 Machine Per Customer** system to guarantee the hygiene, cleanliness, and safety of your garments.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is there any additional fee for pickup and delivery?</h4>
+                    <p>Free! Pickup and delivery services have no extra fees within our coverage areas (Sanur, Kuta, Seminyak, Canggu, Denpasar).</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if an item gets discolored or damaged?</h4>
+                    <p>We carefully sort colors before washing. Our professional team follows strict standard operating procedures to ensure your clothes are handled with utmost care.</p>
+                </div>
             </div>
-
-            <!-- Shoe 24-Hour -->
-            <div class="price-card" onclick="openModal('Shoe 24-Hour', '24 Jam Selesai / 24-Hour Shoe Cleaning', 'Rp 60.000 / Pasang', 'Layanan cuci sepatu premium selesai dalam 24 jam.')">
-                <h3>Shoe Service</h3>
-                <div class="time-info" id="p-t5">Cuci Sepatu 24 Jam / Shoe Wash</div>
-                <div class="price">Rp 60.000 <span class="unit">/ Pasang</span><span class="lbs">/ Pair</span></div>
-                <p id="p-p5" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">Layanan premium sepatu</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="section">
-        <div class="section-header">
-            <h2 id="txt-step-head">Cara Pemesanan</h2>
-            <p id="txt-step-sub">Proses mudah 4 langkah tanpa bikin akun</p>
-        </div>
-        <div class="steps-wrapper">
-            <div class="step-box">
-                <div class="step-num">1</div>
-                <h4 id="s-h1">Kirim WhatsApp</h4>
-                <p id="s-p1">Klik tombol WhatsApp di bawah & kirim lokasi villa/hotel kamu.</p>
-            </div>
-            <div class="step-box">
-                <div class="step-num">2</div>
-                <h4 id="s-h2">Driver Jemput</h4>
-                <p id="s-p2">Kurir kami menjemput pakaian kotor langsung ke lobby/villa.</p>
-            </div>
-            <div class="step-box">
-                <div class="step-num">3</div>
-                <h4 id="s-h3">Proses Cuci</h4>
-                <p id="s-p3">Dicuci terpisah, disetrika rapi, & dibungkus higienis.</p>
-            </div>
-            <div class="step-box">
-                <div class="step-num">4</div>
-                <h4 id="s-h4">Diantar Kembali</h4>
-                <p id="s-p4">Baju bersih diantar tepat waktu sesuai paket pilihan Anda.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Marquee (Slideshow Banyak Ulasan Internasional) -->
-    <section class="section" style="max-width: 100%; padding: 60px 0;">
-        <div class="section-header">
-            <h2 id="txt-rev-head">Ulasan Pelanggan</h2>
-            <p id="txt-rev-sub">Apa kata turis & lokal tentang layanan kami</p>
-        </div>
-
-        <div class="marquee-container">
-            <div class="marquee-track" id="marqueeTrack">
-                <!-- Data Review akan di-generate otomatis oleh Javascript di bawah -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Coverage & Location Section -->
-    <section class="section">
-        <div class="coverage-card">
-            <h3 id="txt-cov-head">Area Antar Jemput Gratis</h3>
-            <p id="txt-cov-sub">Driver kami siap meluncur ke Hotel, Villa, dan Homestay di wilayah Bali berikut:</p>
-            <div class="area-tags">
-                <span class="area-tag">📍 Sanur</span>
-                <span class="area-tag">📍 Sanur Kauh</span>
-                <span class="area-tag">📍 Denpasar Selatan</span>
-                <span class="area-tag">📍 Canggu</span>
-                <span class="area-tag">📍 Seminyak</span>
-                <span class="area-tag">📍 Kuta</span>
-                <span class="area-tag">📍 Legian</span>
-                <span class="area-tag">📍 Berawa</span>
-                <span class="area-tag">📍 Kerobokan</span>
-            </div>
-            <div class="location-info">
-                <strong>🏠 Outlet Store:</strong><br>
-                Jl. Danau Poso, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Modal Pop-Up Detail Paket -->
     <div id="packageModal" class="modal">
@@ -785,15 +925,15 @@
             <div id="modalPrice" style="font-size: 1.8rem; font-weight: 800; color: var(--dark); margin: 12px 0;"></div>
             <p id="modalDesc" style="color: #475569; font-size: 0.95rem; line-height: 1.5;"></p>
             <a id="modalWaBtn" href="#" target="_blank" class="modal-wa-btn">
-                💬 Pesan Paket Ini via WhatsApp
+                💬 Order This Package via WhatsApp
             </a>
         </div>
     </div>
 
     <!-- Sticky Floating CTA -->
     <div class="sticky-footer">
-        <a id="btn-wa-link" href="https://wa.me/6281234567890?text=Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express" class="btn-wa" target="_blank">
-            💬 <span id="txt-cta-btn">Pesan Via WhatsApp Sekarang</span>
+        <a id="btn-wa-link" href="https://wa.me/6281234567890?text=Hello%20U-Clean%20Admin,%20I%20would%20like%20to%20order%20express%20laundry" class="btn-wa" target="_blank">
+            💬 <span id="txt-cta-btn">Order Via WhatsApp Now</span>
         </a>
     </div>
 
@@ -801,38 +941,12 @@
     <footer>
         <p>© 2026 U-Clean Bali. All rights reserved.</p>
         <p style="margin-top: 2px;">Jl. Danau Poso, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali</p>
-        <p style="margin-top: 4px; opacity: 0.7;">Open Daily: 07:00 AM - 10:00 PM WITA</p>
+        <p style="margin-top: 4px; opacity: 0.7;">Open 24 Hours</p>
     </footer>
 
-    <!-- Translations & Interactivity Script -->
+    <!-- Translations & Script Interactivity -->
     <script>
         const translations = {
-            id: {
-                status: "Driver Ready / Antar Jemput Aktif",
-                heroTitle: "Laundry Express <span>2 Jam Selesai</span> di Bali",
-                heroSub: "Gratis antar jemput langsung ke Hotel, Villa, atau Resort Anda di Sanur, Canggu, Seminyak, Kuta & Denpasar.",
-                featHead: "Mengapa Memilih U-Clean?",
-                featSub: "Layanan terpercaya untuk turis, expat, & lokal di Bali",
-                fh1: "Super Kilat 2 Jam", fp1: "Cucian siap dalam 2 jam. Cocok untuk Anda yang mau check-out atau terbang malam.",
-                fh2: "Gratis Antar Jemput", fp2: "Cukup kirim serlock lokasi Villa / Hotel Anda via WA, kurir kami langsung meluncur.",
-                fh3: "1 Mesin 1 Pelanggan", fp3: "Pakaian Anda dicuci terpisah dari pelanggan lain. Dijamin higienis & wangi.",
-                fh4: "Harga Transparan", fp4: "Tidak ada biaya tersembunyi. Timbang & bayar sesuai tarif per kilo resmi.",
-                priceHead: "Daftar Harga Service", priceSub: "Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)",
-                pop: "Paling Laris",
-                
-                pt1: "2 Jam Selesai", pt2: "3 Jam Selesai", pt3: "6 Jam Selesai", pt4: "12 Jam Selesai", pt5: "Sepatu 24 Jam",
-                pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Layanan cuci sepatu premium",
-                
-                stepHead: "Cara Pemesanan", stepSub: "Proses mudah 4 langkah tanpa bikin akun",
-                sh1: "Kirim WA", sp1: "Klik tombol WA di bawah & kirim lokasi villa/hotel kamu.",
-                sh2: "Driver Jemput", sp2: "Kurir kami menjemput pakaian kotor langsung ke lobby/villa.",
-                sh3: "Proses Cuci", sp3: "Dicuci terpisah, disetrika rapi, & dibungkus higienis.",
-                sh4: "Diantar Kembali", sp4: "Baju bersih diantar tepat waktu sesuai paket pilihan Anda.",
-                revHead: "Ulasan Pelanggan", revSub: "Apa kata turis & lokal tentang layanan U-Clean",
-                covHead: "Area Antar Jemput Gratis", covSub: "Driver U-Clean siap meluncur ke Hotel, Villa, dan Homestay di wilayah Bali berikut:",
-                ctaBtn: "Pesan Via WhatsApp Sekarang",
-                waMsg: "Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express"
-            },
             en: {
                 status: "Driver Ready / Free Pickup Active",
                 heroTitle: "Express Laundry <span>2 Hours Finished</span> in Bali",
@@ -840,17 +954,14 @@
                 featHead: "Why Choose U-Clean?",
                 featSub: "Trusted laundry service for tourists, expats, & locals in Bali",
                 fh1: "2-Hour Super Express", fp1: "Ready in 2 hours. Perfect if you have an upcoming checkout or late flight.",
-                fh2: "Free Pickup & Delivery", fp2: "Just drop your Villa / Hotel pin location on WA, our driver comes right away.",
+                fh2: "Free Pickup & Delivery", fp2: "Just drop your Villa / Hotel pin location on WhatsApp, our driver comes right away.",
                 fh3: "1 Machine Per Customer", fp3: "Washed separately from others. Guaranteed hygienic, clean, and fresh.",
                 fh4: "Transparent Pricing", fp4: "No hidden delivery fees. Weighted and paid according to official rates.",
                 priceHead: "Service Price List", priceSub: "Choose the speed that fits your travel schedule (Click for package details)",
                 pop: "Most Popular",
-                
                 pt1: "2-Hour Service", pt2: "3-Hour Service", pt3: "6-Hour Service", pt4: "12-Hour Service", pt5: "24-Hour Shoe Wash",
                 pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Premium shoe cleaning",
-                
-                stepHead: "How It Works", stepSub: "Easy 4-step process without creating an account",
-                sh1: "Send WA", sp1: "Click WA button below & send your villa/hotel location pin.",
+                sh1: "Send WhatsApp", sp1: "Click WhatsApp button below & send your villa/hotel location pin.",
                 sh2: "Driver Collects", sp2: "Our driver collects your laundry directly from your lobby or villa.",
                 sh3: "Wash & Iron", sp3: "Washed separately, neatly ironed, & hygienically packed.",
                 sh4: "Delivered Back", sp4: "Fresh clothes delivered back on time right to your door.",
@@ -858,6 +969,29 @@
                 covHead: "Free Pickup & Delivery Area", covSub: "Our U-Clean drivers are ready to head to Hotels, Villas, and Homestays in:",
                 ctaBtn: "Order Via WhatsApp Now",
                 waMsg: "Hello%20U-Clean%20Admin,%20I%20would%20like%20to%20order%20express%20laundry"
+            },
+            id: {
+                status: "Driver Ready / Antar Jemput Aktif",
+                heroTitle: "Laundry Express <span>2 Jam Selesai</span> di Bali",
+                heroSub: "Gratis antar jemput langsung ke Hotel, Villa, atau Resort Anda di Sanur, Canggu, Seminyak, Kuta & Denpasar.",
+                featHead: "Mengapa Memilih U-Clean?",
+                featSub: "Layanan terpercaya untuk turis, expat, & lokal di Bali",
+                fh1: "Super Kilat 2 Jam", fp1: "Cucian siap dalam 2 jam. Cocok untuk Anda yang mau check-out atau terbang malam.",
+                fh2: "Gratis Antar Jemput", fp2: "Cukup kirim serlock lokasi Villa / Hotel Anda via WhatsApp, kurir kami langsung meluncur.",
+                fh3: "1 Mesin 1 Pelanggan", fp3: "Pakaian Anda dicuci terpisah dari pelanggan lain. Dijamin higienis & wangi.",
+                fh4: "Harga Transparan", fp4: "Tidak ada biaya tersembunyi. Timbang & bayar sesuai tarif per kilo resmi.",
+                priceHead: "Daftar Harga Service", priceSub: "Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)",
+                pop: "Paling Laris",
+                pt1: "2 Jam Selesai", pt2: "3 Jam Selesai", pt3: "6 Jam Selesai", pt4: "12 Jam Selesai", pt5: "Sepatu 24 Jam",
+                pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Layanan cuci sepatu premium",
+                sh1: "Send WhatsApp", sp1: "Klik tombol WhatsApp di bawah & kirim lokasi villa/hotel kamu.",
+                sh2: "Driver Jemput", sp2: "Kurir kami menjemput pakaian kotor langsung ke lobby/villa.",
+                sh3: "Proses Cuci", sp3: "Dicuci terpisah, disetrika rapi, & dibungkus higienis.",
+                sh4: "Diantar Kembali", sp4: "Baju bersih diantar tepat waktu sesuai paket pilihan Anda.",
+                revHead: "Ulasan Pelanggan", revSub: "Apa kata turis & lokal tentang layanan U-Clean",
+                covHead: "Area Antar Jemput Gratis", covSub: "Driver U-Clean siap meluncur ke Hotel, Villa, dan Homestay di wilayah Bali berikut:",
+                ctaBtn: "Pesan Via WhatsApp Sekarang",
+                waMsg: "Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express"
             },
             zh: {
                 status: "司机准备就绪 / 免费接送中",
@@ -871,12 +1005,9 @@
                 fh4: "价格透明", fp4: "绝无隐藏派送费。按实际重量与官方价格计费。",
                 priceHead: "服务价格表", priceSub: "根据您的行程安排选择合适的洗涤速度（点击查看详情）",
                 pop: "最受欢迎",
-                
                 pt1: "2小时特快", pt2: "3小时特快", pt3: "6小时特快", pt4: "12小时特快", pt5: "24小时洗鞋",
                 pp1: "*最低起洗量 2 公斤", pp2: "*最低起洗量 2.2 公斤", pp3: "*最低起洗量 3 公斤", pp4: "*最低起洗量 3.9 公斤", pp5: "高级洗鞋服务",
-                
-                stepHead: "服务流程", stepSub: "无需注册账号，简单4步轻松搞定",
-                sh1: "发送消息", sp1: "点击下方WA按钮，发送您的别墅/酒店位置。",
+                sh1: "Send WhatsApp", sp1: "点击下方WhatsApp按钮，发送您的别墅/酒店位置。",
                 sh2: "司机取件", sp2: "司机直接前往您的酒店大堂或别墅收取衣物。",
                 sh3: "专业洗烫", sp3: "单独清洗、整烫整洁并进行卫生打包。",
                 sh4: "按时送回", sp4: "洗净的衣物按时送还至您的住所。",
@@ -897,47 +1028,48 @@
                 fh4: "明朗会計", fp4: "配達料などの隠れた費用はありません。明示されたキロ単価で計量・お支払い。",
                 priceHead: "料金表", priceSub: "ご scheduled に合わせてスピードをお選びいただけます",
                 pop: "一番人気",
-                
                 pt1: "2時間コース", pt2: "3時間コース", pt3: "6時間コース", pt4: "12時間コース", pt5: "24時間シューズ洗い",
                 pp1: "*ご注文は2kgから", pp2: "*ご注文は2.2kgから", pp3: "*ご注文は3kgから", pp4: "*ご注文は3.9kgから", pp5: "プレミアム・シューズ・クリーニング",
-                
-                stepHead: "ご利用手順", stepSub: "会員登録不要のカンタン4ステップ",
-                sh1: "WAで連絡", sp1: "下のWAボタンをタップし、位置情報を送信。",
+                sh1: "Send WhatsApp", sp1: "下のWhatsAppボタンをタップし、位置情報を送信。",
                 sh2: "無料集荷", sp2: "ドライバーがヴィラやロビーまで集荷に伺います。",
                 sh3: "洗濯＆アイロン", sp3: "個別洗濯し、綺麗にアイロン掛け＆パッキング。",
                 sh4: "お届け", sp4: "指定の時間にお部屋までお届けします。",
-                revHead: "客户评价", revSub: "実際に利用されたお客様のレビュー",
+                revHead: "お客様の声", revSub: "実際に利用されたお客様のレビュー",
                 covHead: "無料対応エリア", covSub: "以下のエリアのホテル、ヴィラ、ホームステイへお伺いします：",
                 ctaBtn: "今すぐ WhatsApp で注文する",
                 waMsg: "こんにちはU-Clean、エクスプレスランドリーを注文したいです"
             }
         };
 
-        const phone = "6281234567890"; // Ganti nomor WA bisnis kamu disini
+        const phone = "6281234567890";
 
-        // Daftar Ulasan Internasional Melimpah (EN, ID, RU, CN, JP, ES, FR, DE)
         const reviewList = [
-            { text: '"Super fast service! Messaged them on WA, driver came to my villa 20 mins later. Highly recommended!"', author: "Liam" },
-            { text: '"Sangat cepat! Pakaian kotor habis trekking langsung bersih lagi dalam 2 jam. Penyelamat liburan!"', author: "Budi" },
+            { text: '"Super fast service! Messaged them on WhatsApp, driver came to my villa 20 mins later. Highly recommended!"', author: "Liam" },
+            { text: '"Very fast! Dirty clothes right after trekking were clean again in just 2 hours. A vacation saver!"', author: "Budi" },
             { text: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Will absolutely use again."', author: "Clara" },
             { text: '"Отличный сервис! Забрали вещи из отеля и вернули чистыми через 2 часа. Рекомендую!"', author: "Anastasia" },
             { text: '"Best laundry in Sanur. My clothes smell amazing and folded perfectly. 5 stars!"', author: "Sarah" },
-            { text: '"非常高效的洗衣服务！在WA上预订很方便，而且衣服洗得特别干净。"', author: "Wei Chen" },
-            { text: '"Kurirnya sangat sopan dan tepat waktu. Wanginya juga premium, tidak seperti laundry biasa."', author: "Anita" },
+            { text: '"非常高效的洗衣服务！在WhatsApp上预订很方便，而且衣服洗得特别干净。"', author: "Wei Chen" },
+            { text: '"The courier was very polite and punctual. The fragrance is also premium, unlike ordinary laundries."', author: "Anita" },
             { text: '"Awesome express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."', author: "David" },
             { text: '"対応がとても早くて助かりました。ホテルまで無料で取りに来てくれるのも便利です！"', author: "Yuki" },
-            { text: '"Mudah banget pesannya, cuma kirim WA. Gak perlu repot isi form panjang lebar, driver langsung jemput."', author: "Putri" },
+            { text: '"Super easy to order, just sent a WhatsApp message. No hassle filling out long forms, driver came right away."', author: "Putri" },
             { text: '"¡Increíble! Lavaron mi ropa en 2 horas justo antes de ir al aeropuerto. Gracias U-Clean."', author: "Carlos" },
-            { text: '"Sepatu putih kesayangan saya dicuci bersih banget kayak baru beli. Layanan cuci sepatunya juara!"', author: "Kevin" },
+            { text: '"My favorite white sneakers were washed impeccably clean like brand new. The shoe cleaning service is a champion!"', author: "Kevin" },
             { text: '"Fast, reliable, and my clothes have never smelled this fresh. Thank you U-Clean team!"', author: "Michael" },
-            { text: '"Awalnya ragu coba cuci 2 jam, ternyata beneran selesai dan kering sempurna! Wow banget pelayanannya!"', author: "Linda" },
+            { text: '"At first I hesitated trying a 2-hour wash, but it really finished and dried completely! Absolute top-notch service!"', author: "Linda" },
             { text: '"Super service rapide ! Vêtements propres et parfumés reçus en un temps record à ma villa."', author: "Antoine" },
-            { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" },
-            { text: '"Очень удобно! Написал в WhatsApp, забрали из отеля в Чангу и привезли обратно идеальным."', author: "Dmitry" },
-            { text: '"服务态度非常好，洗完的衣服叠得整整齐齐，还带有淡淡的清香。赞！"', author: "Xiao Mei" },
-            { text: '"バリ島で一番お気に入りのランドリーです。対応が丁寧で仕上がりも完璧。"', author: "Kenji" },
-            { text: '"Amazing quality and super quick turnaround. Best laundry experience in Bali so far!"', author: "Jessica" }
+            { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" }
         ];
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active-page'));
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active-tab'));
+            
+            document.getElementById('page-' + pageId).classList.add('active-page');
+            document.getElementById('tab-' + pageId).classList.add('active-tab');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function setLang(lang) {
             const data = translations[lang];
@@ -974,8 +1106,6 @@
             document.getElementById('p-p4').innerText = data.pp4;
             document.getElementById('p-p5').innerText = data.pp5;
 
-            document.getElementById('txt-step-head').innerText = data.stepHead;
-            document.getElementById('txt-step-sub').innerText = data.stepSub;
             document.getElementById('s-h1').innerText = data.sh1; document.getElementById('s-p1').innerText = data.sp1;
             document.getElementById('s-h2').innerText = data.sh2; document.getElementById('s-p2').innerText = data.sp2;
             document.getElementById('s-h3').innerText = data.sh3; document.getElementById('s-p3').innerText = data.sp3;
@@ -991,14 +1121,13 @@
             document.getElementById('btn-wa-link').href = `https://wa.me/${phone}?text=${data.waMsg}`;
         }
 
-        // Pop-up Modal Logic
         function openModal(title, time, price, desc) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalTime').innerText = time;
             document.getElementById('modalPrice').innerText = price;
             document.getElementById('modalDesc').innerText = desc;
             
-            let message = `Halo Admin U-Clean, saya ingin order paket *${title}* (${price}). Tolong info penjemputannya ya!`;
+            let message = `Hello U-Clean Admin, I want to order *${title}* (${price}). Please info the pickup arrangement!`;
             document.getElementById('modalWaBtn').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             
             document.getElementById('packageModal').style.display = 'flex';
@@ -1008,12 +1137,10 @@
             document.getElementById('packageModal').style.display = 'none';
         }
 
-        // Generate Marquee Reviews
         function initMarquee() {
             const track = document.getElementById('marqueeTrack');
             let reviewHTML = '';
             
-            // Loop data array untuk membuat kotak HTML ulasan
             reviewList.forEach(r => {
                 reviewHTML += `
                     <div class="marquee-card">
@@ -1025,11 +1152,9 @@
                     </div>`;
             });
             
-            // Gandakan HTML 2 kali supaya efek infinite loop-nya mulus dan tidak patah
             track.innerHTML = reviewHTML + reviewHTML;
         }
 
-        // Close Modal when clicking outside box
         window.onclick = function(event) {
             const modal = document.getElementById('packageModal');
             if (event.target === modal) {
@@ -1037,7 +1162,6 @@
             }
         };
 
-        // Initialize Page
         window.onload = function() {
             initMarquee();
         };
