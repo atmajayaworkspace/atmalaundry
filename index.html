@@ -45,7 +45,7 @@
         header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
@@ -54,7 +54,7 @@
         .nav-container {
             max-width: 1150px;
             margin: 0 auto;
-            padding: 14px 20px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,8 +68,8 @@
         }
 
         .logo-jpeg {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid var(--primary);
@@ -77,22 +77,23 @@
         }
 
         .logo-text {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--primary);
             letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
         .logo-text span {
             font-weight: 400;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-left: -2px;
+            font-size: 0.85rem;
+            display: block;
         }
 
         .nav-menu {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -113,15 +114,17 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         /* Hamburger Button */
         .hamburger-btn {
             display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
             cursor: pointer;
             color: var(--dark);
         }
@@ -129,7 +132,7 @@
         .lang-wrapper {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .lang-label {
@@ -144,7 +147,7 @@
             display: flex;
             gap: 4px;
             background: #f1f5f9;
-            padding: 4px;
+            padding: 3px;
             border-radius: 30px;
             border: 1px solid var(--border);
         }
@@ -152,20 +155,20 @@
         .lang-btn {
             background: none;
             border: none;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             color: var(--text-muted);
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .lang-btn img {
-            width: 18px;
+            width: 16px;
             height: auto;
             border-radius: 2px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -183,8 +186,8 @@
             flex-direction: column;
             background: var(--surface);
             border-bottom: 1px solid var(--border);
-            padding: 15px 20px;
-            gap: 12px;
+            padding: 12px 20px;
+            gap: 10px;
         }
 
         .mobile-menu.active {
@@ -194,7 +197,7 @@
         .mobile-menu .nav-link {
             text-align: left;
             padding: 8px 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border-bottom: 1px solid #f1f5f9;
         }
 
@@ -216,7 +219,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(37, 211, 102, 0.05) 100%);
-            padding: 60px 20px;
+            padding: 50px 20px;
             border-bottom: 1px solid var(--border);
         }
 
@@ -716,13 +719,37 @@
             background: var(--surface);
         }
 
-        /* RESPONSIVE MEDIA QUERY UNTUK HP */
+        /* RESPONSIVE MEDIA QUERY KHUSUS HP */
         @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .nav-top-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
             .nav-menu {
-                display: none; /* Sembunyikan menu desktop standar di HP */
+                display: none; /* Sembunyikan menu bar horizontal, pindah ke menu hamburger */
             }
             .hamburger-btn {
-                display: block; /* Munculkan tombol hamburger */
+                display: block; /* Tampilkan tombol hamburger di HP */
+            }
+            .lang-wrapper {
+                width: 100%;
+                justify-content: center;
+                background: #f8fafc;
+                padding: 6px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+            }
+            .lang-picker {
+                width: 100%;
+                justify-content: space-around;
             }
             .hero-content {
                 grid-template-columns: 1fr;
@@ -735,9 +762,6 @@
                 left: 10px;
                 bottom: -15px;
             }
-            .lang-label {
-                display: none; /* Sembunyikan label "Language" di layar kecil biar muat */
-            }
         }
     </style>
 </head>
@@ -746,41 +770,45 @@
     <!-- Top Navigation -->
     <header>
         <div class="nav-container">
-            <!-- Logo Gambar JPEG Minimalist Terintegrasi -->
-            <div class="logo-img-container" onclick="switchPage('home')">
-                <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=150&q=80" alt="U-Clean Logo" class="logo-jpeg">
-                <div class="logo-text">U-CLEAN <span>BALI</span></div>
+            <!-- Baris Atas HP: Logo di Kiri, Hamburger di Kanan -->
+            <div class="nav-top-row">
+                <div class="logo-img-container" onclick="switchPage('home')">
+                    <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=150&q=80" alt="U-Clean Logo" class="logo-jpeg">
+                    <div class="logo-text">U-CLEAN <span>BALI</span></div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="nav-menu">
+                    <button class="nav-link active-tab" id="tab-home" onclick="switchPage('home')">Home</button>
+                    <button class="nav-link" id="tab-work" onclick="switchPage('work')">How It Works</button>
+                    <button class="nav-link" id="tab-loc" onclick="switchPage('loc')">Locations</button>
+                    <button class="nav-link" id="tab-help" onclick="switchPage('help')">Help / FAQ</button>
+                </nav>
+
+                <div class="nav-right">
+                    <!-- Tombol Hamburger untuk HP -->
+                    <button class="hamburger-btn" onclick="toggleMobileMenu()">☰ Menu</button>
+                </div>
             </div>
 
-            <!-- Desktop Menu -->
-            <nav class="nav-menu">
-                <button class="nav-link active-tab" id="tab-home" onclick="switchPage('home')">Home</button>
-                <button class="nav-link" id="tab-work" onclick="switchPage('work')">How It Works</button>
-                <button class="nav-link" id="tab-loc" onclick="switchPage('loc')">Locations</button>
-                <button class="nav-link" id="tab-help" onclick="switchPage('help')">Help / FAQ</button>
-            </nav>
-
-            <div class="nav-right">
-                <div class="lang-wrapper">
-                    <span class="lang-label">Language</span>
-                    <div class="lang-picker">
-                        <button class="lang-btn active" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English"> EN</button>
-                        <button class="lang-btn" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="Indonesia"> ID</button>
-                        <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="Chinese"> 中文</button>
-                        <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese"> 日本語</button>
-                    </div>
+            <!-- Baris Bawah di Header (Bahasa dipindah ke bawah logo agar rapi) -->
+            <div class="lang-wrapper">
+                <span class="lang-label" style="display:none;">Language</span>
+                <div class="lang-picker">
+                    <button class="lang-btn active" onclick="setLang('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English"> EN</button>
+                    <button class="lang-btn" onclick="setLang('id')"><img src="https://flagcdn.com/w20/id.png" alt="Indonesia"> ID</button>
+                    <button class="lang-btn" onclick="setLang('zh')"><img src="https://flagcdn.com/w20/cn.png" alt="Chinese"> 中文</button>
+                    <button class="lang-btn" onclick="setLang('ja')"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese"> 日本語</button>
                 </div>
-                <!-- Tombol Hamburger untuk HP -->
-                <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
         </div>
 
-        <!-- Menu Dropdown Mobile -->
+        <!-- Menu Dropdown Mobile saat Hamburger diklik -->
         <div class="mobile-menu" id="mobileMenu">
-            <button class="nav-link active-tab" id="mob-tab-home" onclick="switchPage('home'); toggleMobileMenu();">Home</button>
-            <button class="nav-link" id="mob-tab-work" onclick="switchPage('work'); toggleMobileMenu();">How It Works</button>
-            <button class="nav-link" id="mob-tab-loc" onclick="switchPage('loc'); toggleMobileMenu();">Locations</button>
-            <button class="nav-link" id="mob-tab-help" onclick="switchPage('help'); toggleMobileMenu();">Help / FAQ</button>
+            <button class="nav-link active-tab" id="mob-tab-home" onclick="switchPage('home'); toggleMobileMenu();">🏠 Home</button>
+            <button class="nav-link" id="mob-tab-work" onclick="switchPage('work'); toggleMobileMenu();">⚙️ How It Works</button>
+            <button class="nav-link" id="mob-tab-loc" onclick="switchPage('loc'); toggleMobileMenu();">📍 Locations</button>
+            <button class="nav-link" id="mob-tab-help" onclick="switchPage('help'); toggleMobileMenu();">❓ Help / FAQ</button>
         </div>
     </header>
 
@@ -1163,7 +1191,6 @@
             
             document.getElementById('page-' + pageId).classList.add('active-page');
             
-            // Tandai aktif untuk desktop & mobile menu
             if(document.getElementById('tab-' + pageId)) document.getElementById('tab-' + pageId).classList.add('active-tab');
             if(document.getElementById('mob-tab-' + pageId)) document.getElementById('mob-tab-' + pageId).classList.add('active-tab');
             
