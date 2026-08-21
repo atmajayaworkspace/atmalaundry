@@ -734,10 +734,10 @@
                 width: 100%;
             }
             .nav-menu {
-                display: none; /* Sembunyikan menu bar horizontal, pindah ke menu hamburger */
+                display: none;
             }
             .hamburger-btn {
-                display: block; /* Tampilkan tombol hamburger di HP */
+                display: block;
             }
             .lang-wrapper {
                 width: 100%;
@@ -770,14 +770,12 @@
     <!-- Top Navigation -->
     <header>
         <div class="nav-container">
-            <!-- Baris Atas HP: Logo di Kiri, Hamburger di Kanan -->
             <div class="nav-top-row">
                 <div class="logo-img-container" onclick="switchPage('home')">
                     <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=150&q=80" alt="U-Clean Logo" class="logo-jpeg">
                     <div class="logo-text">U-CLEAN <span>BALI</span></div>
                 </div>
 
-                <!-- Desktop Menu -->
                 <nav class="nav-menu">
                     <button class="nav-link active-tab" id="tab-home" onclick="switchPage('home')">Home</button>
                     <button class="nav-link" id="tab-work" onclick="switchPage('work')">How It Works</button>
@@ -786,12 +784,10 @@
                 </nav>
 
                 <div class="nav-right">
-                    <!-- Tombol Hamburger untuk HP -->
                     <button class="hamburger-btn" onclick="toggleMobileMenu()">☰ Menu</button>
                 </div>
             </div>
 
-            <!-- Baris Bawah di Header (Bahasa dipindah ke bawah logo agar rapi) -->
             <div class="lang-wrapper">
                 <span class="lang-label" style="display:none;">Language</span>
                 <div class="lang-picker">
@@ -803,7 +799,6 @@
             </div>
         </div>
 
-        <!-- Menu Dropdown Mobile saat Hamburger diklik -->
         <div class="mobile-menu" id="mobileMenu">
             <button class="nav-link active-tab" id="mob-tab-home" onclick="switchPage('home'); toggleMobileMenu();">🏠 Home</button>
             <button class="nav-link" id="mob-tab-work" onclick="switchPage('work'); toggleMobileMenu();">⚙️ How It Works</button>
@@ -842,7 +837,7 @@
             </div>
         </section>
 
-        <!-- Pricing Section (DIBALIK KE DEPAN) -->
+        <!-- Pricing Section -->
         <section class="section" id="pricing">
             <div class="section-header">
                 <h2 id="txt-price-head">Service Price List</h2>
@@ -851,49 +846,49 @@
             
             <div class="pricing-grid">
                 <!-- Ultra Express 2-Hour -->
-                <div class="price-card featured" onclick="openModal('Ultra Express 2-Hour', '2-Hour Ultra Express', 'Rp 60.000 / Kg', 'Hygienic express wash in 2 hours, neatly ironed and ready to be delivered back. *Minimum order 2 kg.')">
+                <div class="price-card featured" onclick="openModal('p1')">
                     <div class="tag-popular" id="txt-pop">Most Popular</div>
-                    <h3>Ultra Express</h3>
+                    <h3 id="p-title-1">Ultra Express</h3>
                     <div class="time-info" id="p-t1">2-Hour Service</div>
                     <div class="price">Rp 60.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                     <p id="p-p1" style="font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin-bottom:0;">*Minimum order 2 kg</p>
                 </div>
                 
                 <!-- Express 3-Hour -->
-                <div class="price-card" onclick="openModal('Express 3-Hour', '3-Hour Service', 'Rp 50.000 / Kg', 'Fast 3-hour service, washed separately per customer with long-lasting fragrance. *Minimum order 2.2 kg.')">
-                    <h3>Express 3-Hour</h3>
+                <div class="price-card" onclick="openModal('p2')">
+                    <h3 id="p-title-2">Express 3-Hour</h3>
                     <div class="time-info" id="p-t2">3-Hour Service</div>
                     <div class="price">Rp 50.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                     <p id="p-p2" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 2.2 kg</p>
                 </div>
                 
                 <!-- Express 6-Hour -->
-                <div class="price-card" onclick="openModal('Express 6-Hour', '6-Hour Service', 'Rp 40.000 / Kg', 'Completed within 6 hours, processed hygienically and delivered on time. *Minimum order 3 kg.')">
-                    <h3>Express 6-Hour</h3>
+                <div class="price-card" onclick="openModal('p3')">
+                    <h3 id="p-title-3">Express 6-Hour</h3>
                     <div class="time-info" id="p-t3">6-Hour Service</div>
                     <div class="price">Rp 40.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                     <p id="p-p3" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3 kg</p>
                 </div>
                 
                 <!-- Express 12-Hour -->
-                <div class="price-card" onclick="openModal('Express 12-Hour', '12-Hour Service', 'Rp 30.000 / Kg', '12-hour wash service with maximum washing and ironing quality. *Minimum order 3.9 kg.')">
-                    <h3>Express 12-Hour</h3>
+                <div class="price-card" onclick="openModal('p4')">
+                    <h3 id="p-title-4">Express 12-Hour</h3>
                     <div class="time-info" id="p-t4">12-Hour Service</div>
                     <div class="price">Rp 30.000 <span class="unit">/ Kg</span><span class="lbs">(≈ 2.2 lbs)</span></div>
                     <p id="p-p4" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">*Minimum order 3.9 kg</p>
                 </div>
 
                 <!-- Shoe 24-Hour -->
-                <div class="price-card" onclick="openModal('Shoe 24-Hour', '24-Hour Shoe Cleaning', 'Rp 60.000 / Pair', 'Premium shoe cleaning service finished in 24 hours.')">
-                    <h3>Shoe Service</h3>
+                <div class="price-card" onclick="openModal('p5')">
+                    <h3 id="p-title-5">Shoe Service</h3>
                     <div class="time-info" id="p-t5">24-Hour Shoe Wash</div>
-                    <div class="price">Rp 60.000 <span class="unit">/ Pair</span><span class="lbs">/ Pair</span></div>
+                    <div class="price">Rp 60.000 <span class="unit" id="unit-pair">/ Pair</span><span class="lbs" id="unit-pair-sub">/ Pair</span></div>
                     <p id="p-p5" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom:0;">Premium shoe cleaning</p>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section (DIBALIK KE BELAKANG) -->
+        <!-- Features Section -->
         <section class="section">
             <div class="section-header">
                 <h2 id="txt-feat-head">Why Choose U-Clean?</h2>
@@ -1042,9 +1037,7 @@
             <div id="modalTime" style="font-weight: 700; color: var(--text-muted); margin-top: 4px;"></div>
             <div id="modalPrice" style="font-size: 1.8rem; font-weight: 800; color: var(--dark); margin: 12px 0;"></div>
             <p id="modalDesc" style="color: #475569; font-size: 0.95rem; line-height: 1.5;"></p>
-            <a id="modalWaBtn" href="#" target="_blank" class="modal-wa-btn">
-                💬 Order This Package via WhatsApp
-            </a>
+            <a id="modalWaBtn" href="#" target="_blank" class="modal-wa-btn">💬 Order Package</a>
         </div>
     </div>
 
@@ -1064,6 +1057,9 @@
 
     <!-- Translations & Script Interactivity -->
     <script>
+        let currentLang = 'en';
+        let currentPackageKey = null;
+
         const translations = {
             en: {
                 status: "Driver Ready / Free Pickup Active",
@@ -1077,8 +1073,14 @@
                 fh4: "Transparent Pricing", fp4: "No hidden delivery fees. Weighted and paid according to official rates.",
                 priceHead: "Service Price List", priceSub: "Choose the speed that fits your travel schedule (Click for package details)",
                 pop: "Most Popular",
-                pt1: "2-Hour Service", pt2: "3-Hour Service", pt3: "6-Hour Service", pt4: "12-Hour Service", pt5: "24-Hour Shoe Wash",
-                pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Premium shoe cleaning",
+                
+                title1: "Ultra Express", pt1: "2-Hour Service", pp1: "*Minimum order 2 kg",
+                title2: "Express 3-Hour", pt2: "3-Hour Service", pp2: "*Minimum order 2.2 kg",
+                title3: "Express 6-Hour", pt3: "6-Hour Service", pp3: "*Minimum order 3 kg",
+                title4: "Express 12-Hour", pt4: "12-Hour Service", pp4: "*Minimum order 3.9 kg",
+                title5: "Shoe Service", pt5: "24-Hour Shoe Wash", pp5: "Premium shoe cleaning",
+                unitPair: "/ Pair",
+
                 sh1: "Send WhatsApp", sp1: "Click WhatsApp button below & send your villa/hotel location pin.",
                 sh2: "Driver Collects", sp2: "Our driver collects your laundry directly from your lobby or villa.",
                 sh3: "Wash & Iron", sp3: "Washed separately, neatly ironed, & hygienically packed.",
@@ -1086,7 +1088,16 @@
                 revHead: "Customer Reviews", revSub: "What tourists & locals say about U-Clean service",
                 covHead: "Free Pickup & Delivery Area", covSub: "Our U-Clean drivers are ready to head to Hotels, Villas, and Homestays in:",
                 ctaBtn: "Order Via WhatsApp Now",
-                waMsg: "Hello%20U-Clean%20Admin,%20I%20would%20like%20to%20order%20express%20laundry"
+                waMsg: "Hello%20U-Clean%20Admin,%20I%20would%20like%20to%20order%20express%20laundry",
+
+                modalWaBtnText: "💬 Order This Package via WhatsApp",
+                packages: {
+                    p1: { title: "Ultra Express 2-Hour", time: "2-Hour Express Service", price: "Rp 60.000 / Kg", desc: "Hygienic express wash finished in 2 hours, neatly ironed, and ready to be delivered back to your villa/hotel. *Minimum order 2 kg." },
+                    p2: { title: "Express 3-Hour", time: "3-Hour Service", price: "Rp 50.000 / Kg", desc: "Fast 3-hour express service, washed separately per customer with long-lasting premium fragrance. *Minimum order 2.2 kg." },
+                    p3: { title: "Express 6-Hour", time: "6-Hour Service", price: "Rp 40.000 / Kg", desc: "Completed within 6 hours, processed hygienically and delivered on time directly to your door. *Minimum order 3 kg." },
+                    p4: { title: "Express 12-Hour", time: "12-Hour Service", price: "Rp 30.000 / Kg", desc: "12-hour wash service with maximum washing and steam ironing quality. *Minimum order 3.9 kg." },
+                    p5: { title: "Shoe Service 24-Hour", time: "24-Hour Shoe Wash", price: "Rp 60.000 / Pair", desc: "Specialized premium shoe cleaning service, removing stains and odors, finished in 24 hours." }
+                }
             },
             id: {
                 status: "Driver Ready / Antar Jemput Aktif",
@@ -1100,8 +1111,14 @@
                 fh4: "Harga Transparan", fp4: "Tidak ada biaya tersembunyi. Timbang & bayar sesuai tarif per kilo resmi.",
                 priceHead: "Daftar Harga Service", priceSub: "Pilih kecepatan layanan sesuai kebutuhan perjalanan Anda (Klik untuk pesan detail)",
                 pop: "Paling Laris",
-                pt1: "2 Jam Selesai", pt2: "3 Jam Selesai", pt3: "6 Jam Selesai", pt4: "12 Jam Selesai", pt5: "Sepatu 24 Jam",
-                pp1: "*Minimum order 2 kg", pp2: "*Minimum order 2.2 kg", pp3: "*Minimum order 3 kg", pp4: "*Minimum order 3.9 kg", pp5: "Layanan cuci sepatu premium",
+
+                title1: "Super Kilat 2 Jam", pt1: "Layanan 2 Jam", pp1: "*Minimum order 2 kg",
+                title2: "Express 3 Jam", pt2: "Layanan 3 Jam", pp2: "*Minimum order 2.2 kg",
+                title3: "Express 6 Jam", pt3: "Layanan 6 Jam", pp3: "*Minimum order 3 kg",
+                title4: "Express 12 Jam", pt4: "Layanan 12 Jam", pp4: "*Minimum order 3.9 kg",
+                title5: "Cuci Sepatu", pt5: "Cuci Sepatu 24 Jam", pp5: "Layanan cuci sepatu premium",
+                unitPair: "/ Pasang",
+
                 sh1: "Send WhatsApp", sp1: "Klik tombol WhatsApp di bawah & kirim lokasi villa/hotel kamu.",
                 sh2: "Driver Jemput", sp2: "Kurir kami menjemput pakaian kotor langsung ke lobby/villa.",
                 sh3: "Proses Cuci", sp3: "Dicuci terpisah, disetrika rapi, & dibungkus higienis.",
@@ -1109,7 +1126,16 @@
                 revHead: "Ulasan Pelanggan", revSub: "Apa kata turis & lokal tentang layanan U-Clean",
                 covHead: "Area Antar Jemput Gratis", covSub: "Driver U-Clean siap meluncur ke Hotel, Villa, dan Homestay di wilayah Bali berikut:",
                 ctaBtn: "Pesan Via WhatsApp Sekarang",
-                waMsg: "Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express"
+                waMsg: "Halo%20Admin%20U-Clean,%20mau%20order%20laundry%20express",
+
+                modalWaBtnText: "💬 Pesan Paket Ini via WhatsApp",
+                packages: {
+                    p1: { title: "Super Kilat 2 Jam", time: "Layanan 2 Jam Selesai", price: "Rp 60.000 / Kg", desc: "Cuci kilat higienis selesai dalam 2 jam, disetrika rapi, dan siap diantar kembali ke villa/hotel Anda. *Minimum order 2 kg." },
+                    p2: { title: "Express 3 Jam", time: "Layanan 3 Jam Selesai", price: "Rp 50.000 / Kg", desc: "Layanan ekspres 3 jam, pakaian dicuci terpisah per pelanggan dengan parfum tahan lama. *Minimum order 2.2 kg." },
+                    p3: { title: "Express 6 Jam", time: "Layanan 6 Jam Selesai", price: "Rp 40.000 / Kg", desc: "Selesai dalam 6 jam, diproses secara higienis dan diantar tepat waktu langsung ke tempat Anda. *Minimum order 3 kg." },
+                    p4: { title: "Express 12 Jam", time: "Layanan 12 Jam Selesai", price: "Rp 30.000 / Kg", desc: "Layanan cuci 12 jam dengan kualitas hasil cuci dan setrika steam yang maksimal. *Minimum order 3.9 kg." },
+                    p5: { title: "Cuci Sepatu 24 Jam", time: "Cuci Sepatu 24 Jam", price: "Rp 60.000 / Pasang", desc: "Layanan pembersihan sepatu premium untuk menghilangkan noda dan bau, selesai dalam 24 jam." }
+                }
             },
             zh: {
                 status: "司机准备就绪 / 免费接送中",
@@ -1123,8 +1149,14 @@
                 fh4: "价格透明", fp4: "绝无隐藏派送费。按实际重量与官方价格计费。",
                 priceHead: "服务价格表", priceSub: "根据您的行程安排选择合适的洗涤速度（点击查看详情）",
                 pop: "最受欢迎",
-                pt1: "2小时特快", pt2: "3小时特快", pt3: "6小时特快", pt4: "12小时特快", pt5: "24小时洗鞋",
-                pp1: "*最低起洗量 2 公斤", pp2: "*最低起洗量 2.2 公斤", pp3: "*最低起洗量 3 公斤", pp4: "*最低起洗量 3.9 公斤", pp5: "高级洗鞋服务",
+
+                title1: "2小时超特快", pt1: "2小时特快服务", pp1: "*最低起洗量 2 公斤",
+                title2: "3小时特快", pt2: "3小时特快服务", pp2: "*最低起洗量 2.2 公斤",
+                title3: "6小时特快", pt3: "6小时特快服务", pp3: "*最低起洗量 3 公斤",
+                title4: "12小时特快", pt4: "12小时特快服务", pp4: "*最低起洗量 3.9 公斤",
+                title5: "洗鞋服务", pt5: "24小时洗鞋服务", pp5: "高级洗鞋服务",
+                unitPair: "/ 双",
+
                 sh1: "Send WhatsApp", sp1: "点击下方WhatsApp按钮，发送您的别墅/酒店位置。",
                 sh2: "司机取件", sp2: "司机直接前往您的酒店大堂或别墅收取衣物。",
                 sh3: "专业洗烫", sp3: "单独清洗、整烫整洁并进行卫生打包。",
@@ -1132,7 +1164,16 @@
                 revHead: "客户评价", revSub: "听听游客与本地人对 U-Clean 的真实评价",
                 covHead: "免费派送覆盖区域", covSub: "我们的 U-Clean 司机随时准备前往以下区域的酒店、别墅与民宿：",
                 ctaBtn: "立即通过 WhatsApp 预订",
-                waMsg: "你好U-Clean，我想预订快洗洗衣服务"
+                waMsg: "你好U-Clean，我想预订快洗洗衣服务",
+
+                modalWaBtnText: "💬 通过 WhatsApp 预订此套餐",
+                packages: {
+                    p1: { title: "2小时超特快", time: "2小时特快服务", price: "Rp 60.000 / 公斤", desc: "卫生快捷的2小时特快洗涤，整烫整洁并送回您的别墅或酒店。*最低起洗量 2 公斤。" },
+                    p2: { title: "3小时特快", time: "3小时特快服务", price: "Rp 50.000 / 公斤", desc: "高效3小时特快洗涤，专机专用，伴有持久高级香气。*最低起洗量 2.2 公斤。" },
+                    p3: { title: "6小时特快", time: "6小时特快服务", price: "Rp 40.000 / 公斤", desc: "6小时内完成，卫生处理，按时送达您的住所。*最低起洗量 3 公斤。" },
+                    p4: { title: "12小时特快", time: "12小时特快服务", price: "Rp 30.000 / 公斤", desc: "12小时标准清洗与专业蒸汽熨烫服务。*最低起洗量 3.9 公斤。" },
+                    p5: { title: "24小时洗鞋服务", time: "24小时洗鞋", price: "Rp 60.000 / 双", desc: "专业鞋类护理洗涤，彻底去除污渍与异味，24小时内完成。" }
+                }
             },
             ja: {
                 status: "ドライバー待機中 / 無料送迎対応中",
@@ -1146,8 +1187,14 @@
                 fh4: "明朗会計", fp4: "配達料などの隠れた費用はありません。明示されたキロ単価で計量・お支払い。",
                 priceHead: "料金表", priceSub: "ご scheduled に合わせてスピードをお選びいただけます",
                 pop: "一番人気",
-                pt1: "2時間コース", pt2: "3時間コース", pt3: "6時間コース", pt4: "12時間コース", pt5: "24時間シューズ洗い",
-                pp1: "*ご注文は2kgから", pp2: "*ご注文は2.2kgから", pp3: "*ご注文は3kgから", pp4: "*ご注文は3.9kgから", pp5: "プレミアム・シューズ・クリーニング",
+
+                title1: "2時間超特急コース", pt1: "2時間コース", pp1: "*ご注文は2kgから",
+                title2: "3時間コース", pt2: "3時間コース", pp2: "*ご注文は2.2kgから",
+                title3: "6時間コース", pt3: "6時間コース", pp3: "*ご注文は3kgから",
+                title4: "12時間コース", pt4: "12時間コース", pp4: "*ご注文は3.9kgから",
+                title5: "シューズ洗浄", pt5: "24時間シューズ洗い", pp5: "プレミアム・シューズ・クリーニング",
+                unitPair: "/ 足",
+
                 sh1: "Send WhatsApp", sp1: "下のWhatsAppボタンをタップし、位置情報を送信。",
                 sh2: "無料集荷", sp2: "ドライバーがヴィラやロビーまで集荷に伺います。",
                 sh3: "洗濯＆アイロン", sp3: "個別洗濯し、綺麗にアイロン掛け＆パッキング。",
@@ -1155,66 +1202,75 @@
                 revHead: "お客様の声", revSub: "実際に利用されたお客様のレビュー",
                 covHead: "無料対応エリア", covSub: "以下のエリアのホテル、ヴィラ、ホームステイへお伺いします：",
                 ctaBtn: "今すぐ WhatsApp で注文する",
-                waMsg: "こんにちはU-Clean、エクスプレスランドリーを注文したいです"
+                waMsg: "こんにちはU-Clean、エクスプレスランドリーを注文したいです",
+
+                modalWaBtnText: "💬 このプランを WhatsApp で注文する",
+                packages: {
+                    p1: { title: "2時間超特急コース", time: "2時間仕上げ", price: "Rp 60.000 / Kg", desc: "わずか2時間で洗濯・乾燥・アイロン掛けまで完了。ご滞在のヴィラやホテルへ速やかにお届けします。*ご注文は2kgから。" },
+                    p2: { title: "3時間コース", time: "3時間仕上げ", price: "Rp 50.000 / Kg", desc: "3時間の迅速サービス。他のお客様の衣類と混ぜず個別に洗濯、上品な香りで仕上げます。*ご注文は2.2kgから。" },
+                    p3: { title: "6時間コース", time: "6時間仕上げ", price: "Rp 40.000 / Kg", desc: "6時間以内に完了。衛生的に処理し、ご指定のお時間通りにお届けします。*ご注文は3kgから。" },
+                    p4: { title: "12時間コース", time: "12時間仕上げ", price: "Rp 30.000 / Kg", desc: "丁寧な洗濯とスチームアイロンで仕上げる12時間標準コース。*ご注文は3.9kgから。" },
+                    p5: { title: "24時間シューズ洗い", time: "24時間スニーカーケア", price: "Rp 60.000 / 足", desc: "汚れやニオイを綺麗に落とすプレミアム・靴クリーニング。24時間でお渡しいたします。" }
+                }
             }
         };
 
         const phone = "6281234567890";
 
-const reviewList = [
-    { text: '"Definisi penyelemat liburan banget! Pas di Bali hujan mulu baju ga kering-kering, kirim WA langsung dijemput. 2 jam beneran kelar kering ringkes."', author: "Andra Kurniawan" },
-    { text: '"Super fast service! Messaged them on WhatsApp, driver came to my villa 20 mins later. Highly recommended!"', author: "Liam" },
-    { text: '"Wanginya enak bgt woy ga lebay tapi tahan lama! Pakaian juga dilipat rapi banget kaya baju baru dari toko."', author: "Sintia R." },
-    { text: '"Отличный сервис! Забрали вещи из отеля и вернули чистыми через 2 часа. Рекомендую!"', author: "Anastasia" },
-    { text: '"Awalnya mikir harga segini agak pricey, pas tau 1 mesin 1 orang terus dapet antar jemput gratis ya worth it parah sih."', author: "Reza Febrian" },
-    { text: '"Awalnya ragu sih cuci kilat 2 jam takut masih basah atau bau apek, ternyata kering sempurna dan rapi banget disetrika steam. Mantap U-Clean!"', author: "Dhea" },
-    { text: '"Drivernya ramah euy, dateng tepat waktu sesuai janji di WA. Pas nimbang juga transparan banget."', author: "Asep Sunandar" },
-    { text: '"非常高效的洗衣服务！在WhatsApp上预订很方便，而且衣服洗得特别干净。"', author: "Wei Chen" },
-    { text: '"Cuci sepatu 24 jamnya mantul! Sepatu putih kotor bekas main di pantai balik bersih mulus lagi."', author: "Rizal Utama" },
-    { text: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Will absolutely use again."', author: "Clara" },
-    { text: '"Admin WhatsApp-nya gercep abis, fast respon meskipun saya chat malem-malem buat booking jemput besok paginya."', author: "Maya Anggraini" },
-    { text: '"Jujur puas sih, harganya transparan ga ada biaya antar jemput siluman. Ditimbang depan kita pas driver dateng. Fix bakal langganan kalau ke Bali lagi."', author: "Fikri Ardiansyah" },
-    { text: '"Baju putih saya ga ada yang luntur atau ketuker. Beneran amanah dan profesional bgt U-Clean."', author: "Tantra W." },
-    { text: '"Awesome express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."', author: "David" },
-    { text: '"Gampang bgt ordernya tinggal serlock lokasi villa di WA, ga perlu ribet isi form panjang lebar."', author: "Dina Kartika" },
-    { text: '"Sangat membantu pas mau check-out hotel tapi baju masih kotor semua. Driver ramah, jam 10 dijemput jam 12 udah balik lagi. Recommended!"', author: "Nadia Utami" },
-    { text: '"Recomended banget buat anak acara / digital nomad di Canggu yang ga sempet nyuci sendiri."', author: "Giri Pratama" },
-    { text: '"対応がとても早くて助かりました。ホテルまで無料で取りに来てくれるのも便利です！"', author: "Yuki" },
-    { text: '"Parfum bajunya enak premium gitu bukan wangi parfum laundry murahan. Setrikanya juga licin rapi."', author: "Fitri Handayani" },
-    { text: '"Very fast! Dirty clothes right after trekking were clean again in just 2 hours. A vacation saver!"', author: "Budi" },
-    { text: '"Cuma butuh 2 jam baju udah balik lagi ke lobby hotel. Pas banget buat yang mau flight sore tapi baju kotor masih banyak."', author: "Hendra Wijaya" },
-    { text: '"Sepatu sneaker putihku yang kotor bekas trekking di Ubud balik jadi kinclong lagi. Worth it banget cuci sepatu di sini."', author: "Bayu Perkasa" },
-    { text: '"Layanan ekspres ter-top di Sanur sih ini. Udah 3x panggil pas liburan dan gapernah mengecewakan."', author: "Niken Ayu" },
-    { text: '"¡Increíble! Lavaron mi ropa en 2 horas justo antes de ir al aeropuerto. Gracias U-Clean."', author: "Carlos" },
-    { text: '"Harganya jujur ga pake biaya siluman. Timbangannya pas ga diakali. Sukses terus U-Clean!"', author: "Bagus Setiawan" },
-    { text: '"Best laundry in Sanur. My clothes smell amazing and folded perfectly. 5 stars!"', author: "Sarah" },
-    { text: '"Pengemasannya rapi pake plastik tebal, jadi aman ga bakal kebasahan pas driver anter pas lagi gerimis."', author: "Vina Pandu" },
-    { text: '"Suka banget karena bajunya dicuci terpisah (1 mesin 1 orang), jadi ga takut ketuker atau ketularan kotoran orang lain. Higienis!"', author: "Dewi" },
-    { text: '"Setrika steamnya bagus bgt, kemeja bahan linen saya ga lecek dan tetep halus."', author: "Dimas Anggara" },
-    { text: '"Super service rapide ! Vêtements propres et parfumés reçus en un temps record à ma villa."', author: "Antoine" },
-    { text: '"Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat U-Clean urusan pakaian beres instan."', author: "Ibu Ratna" },
-    { text: '"Super easy to order, just sent a WhatsApp message. No hassle filling out long forms, driver came right away."', author: "Putri" },
-    { text: '"Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita."', author: "Clarissa Melia" },
-    { text: '"My favorite white sneakers were washed impeccably clean like brand new. The shoe cleaning service is a champion!"', author: "Kevin" },
-    { text: '"Mantap euy, 2 jam beneran keles! Baju wangi, rapi, siap dipake party lagi di Seminyak."', author: "Faris" },
-    { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" },
-    { text: '"Drivernya komunikatif bgt, pas mau sampe villa nemui kita dulu lewat telfon WA."', author: "Eko Prasetyo" },
-    { text: '"The courier was very polite and punctual. The fragrance is also premium, unlike ordinary laundries."', author: "Anita" },
-    { text: '"Kualitas setrikanya juara sih, lipatannya presisi banget rapi pas dimasukkkan ke koper."', author: "Tari" },
-    { text: '"At first I hesitated trying a 2-hour wash, but it really finished and dried completely! Absolute top-notch service!"', author: "Linda" },
-    { text: '"Worth every rupiah! Buat yang liburan singkat di Bali mending pake ini daripada pusing nyuci sendiri."', author: "Rendy K." },
-    { text: '"Fast, reliable, and my clothes have never smelled this fresh. Thank you U-Clean team!"', author: "Michael" },
-    { text: '"Suka bgt sama transparansi harganya. Di web udah jelas ada opsi kiloan & min ordernya."', author: "Indah Permata" },
-    { text: '"Nyelametin jersey bola kesayangan yang kena lumpur pas trekking. Bersih kinclong lagi!"', author: "Yudha S." },
-    { text: '"Udah langganan tiap kali ada business trip ke Denpasar. Pelayanan konsisten cepet dan bersih."', author: "Aris Munandar" },
-    { text: '"Layanan kilat 3 jamnya juga oke banget kalau ga terlalu buru-buru. Hasil tetep wangi & rapi."', author: "Mega L." },
-    { text: '"Beneran ga dicampur sama baju orang lain. Pakaian terasa lebih higienis dan segar."', author: "Kadek Suardana" },
-    { text: '"Pelayanan ramah, respon cepat, driver tepat waktu. 10/10 bintang lima!"', author: "Priscillia" },
-    { text: '"Setrika uapnya rapi banget, celana bahan ga ada lipatan ganda. Pokoknya mantap."', author: "Rudi Hartono" },
-    { text: '"Prosesnya sat-set banget. Bebas ribet buat kita yang lagi enjoy liburan di Bali."', author: "Sarah Amalia" },
-    { text: '"Satu-satunya laundry express di Sanur yang beneran tepat waktu sesuai durasi paket!"', author: "Wayan Gede" },
-    { text: '"Fast respon banget adminnya! Kebetulan lagi liburan di Sanur dan baju numpuk, dijemput langsung ke villa. 2 jam beneran kelar dan wangi banget."', author: "Agus Pratama" }
-];
+        const reviewList = [
+            { text: '"Definisi penyelemat liburan banget! Pas di Bali hujan mulu baju ga kering-kering, kirim WA langsung dijemput. 2 jam beneran kelar kering ringkes."', author: "Andra Kurniawan" },
+            { text: '"Super fast service! Messaged them on WhatsApp, driver came to my villa 20 mins later. Highly recommended!"', author: "Liam" },
+            { text: '"Wanginya enak bgt woy ga lebay tapi tahan lama! Pakaian juga dilipat rapi banget kaya baju baru dari toko."', author: "Sintia R." },
+            { text: '"Отличный сервис! Забрали вещи из отеля и вернули чистыми через 2 часа. Рекомендую!"', author: "Anastasia" },
+            { text: '"Awalnya mikir harga segini agak pricey, pas tau 1 mesin 1 orang terus dapet antar jemput gratis ya worth it parah sih."', author: "Reza Febrian" },
+            { text: '"Awalnya ragu sih cuci kilat 2 jam takut masih basah atau bau apek, ternyata kering sempurna dan rapi banget disetrika steam. Mantap U-Clean!"', author: "Dhea" },
+            { text: '"Drivernya ramah euy, dateng tepat waktu sesuai janji di WA. Pas nimbang juga transparan banget."', author: "Asep Sunandar" },
+            { text: '"非常高效的洗衣服务！在WhatsApp上预订很方便，而且衣服洗得特别干净。"', author: "Wei Chen" },
+            { text: '"Cuci sepatu 24 jamnya mantul! Sepatu putih kotor bekas main di pantai balik bersih mulus lagi."', author: "Rizal Utama" },
+            { text: '"Lifesaver for travelers! Very honest pricing, no hidden fee for delivery. Will absolutely use again."', author: "Clara" },
+            { text: '"Admin WhatsApp-nya gercep abis, fast respon meskipun saya chat malem-malem buat booking jemput besok paginya."', author: "Maya Anggraini" },
+            { text: '"Jujur puas sih, harganya transparan ga ada biaya antar jemput siluman. Ditimbang depan kita pas driver dateng. Fix bakal langganan kalau ke Bali lagi."', author: "Fikri Ardiansyah" },
+            { text: '"Baju putih saya ga ada yang luntur atau ketuker. Beneran amanah dan profesional bgt U-Clean."', author: "Tantra W." },
+            { text: '"Awesome express service. Responsive admin and friendly driver. Didn\'t even need to leave my villa."', author: "David" },
+            { text: '"Gampang bgt ordernya tinggal serlock lokasi villa di WA, ga perlu ribet isi form panjang lebar."', author: "Dina Kartika" },
+            { text: '"Sangat membantu pas mau check-out hotel tapi baju masih kotor semua. Driver ramah, jam 10 dijemput jam 12 udah balik lagi. Recommended!"', author: "Nadia Utami" },
+            { text: '"Recomended banget buat anak acara / digital nomad di Canggu yang ga sempet nyuci sendiri."', author: "Giri Pratama" },
+            { text: '"対応がとても早くて助かりました。ホテルまで無料で取りに来てくれるのも便利です！"', author: "Yuki" },
+            { text: '"Parfum bajunya enak premium gitu bukan wangi parfum laundry murahan. Setrikanya juga licin rapi."', author: "Fitri Handayani" },
+            { text: '"Very fast! Dirty clothes right after trekking were clean again in just 2 hours. A vacation saver!"', author: "Budi" },
+            { text: '"Cuma butuh 2 jam baju udah balik lagi ke lobby hotel. Pas banget buat yang mau flight sore tapi baju kotor masih banyak."', author: "Hendra Wijaya" },
+            { text: '"Sepatu sneaker putihku yang kotor bekas trekking di Ubud balik jadi kinclong lagi. Worth it banget cuci sepatu di sini."', author: "Bayu Perkasa" },
+            { text: '"Layanan ekspres ter-top di Sanur sih ini. Udah 3x panggil pas liburan dan gapernah mengecewakan."', author: "Niken Ayu" },
+            { text: '"¡Increíble! Lavaron mi ropa en 2 horas justo antes de ir al aeropuerto. Gracias U-Clean."', author: "Carlos" },
+            { text: '"Harganya jujur ga pake biaya siluman. Timbangannya pas ga diakali. Sukses terus U-Clean!"', author: "Bagus Setiawan" },
+            { text: '"Best laundry in Sanur. My clothes smell amazing and folded perfectly. 5 stars!"', author: "Sarah" },
+            { text: '"Pengemasannya rapi pake plastik tebal, jadi aman ga bakal kebasahan pas driver anter pas lagi gerimis."', author: "Vina Pandu" },
+            { text: '"Suka banget karena bajunya dicuci terpisah (1 mesin 1 orang), jadi ga takut ketuker atau ketularan kotoran orang lain. Higienis!"', author: "Dewi" },
+            { text: '"Setrika steamnya bagus bgt, kemeja bahan linen saya ga lecek dan tetep halus."', author: "Dimas Anggara" },
+            { text: '"Super service rapide ! Vêtements propres et parfumés reçus en un temps record à ma villa."', author: "Antoine" },
+            { text: '"Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat U-Clean urusan pakaian beres instan."', author: "Ibu Ratna" },
+            { text: '"Super easy to order, just sent a WhatsApp message. No hassle filling out long forms, driver came right away."', author: "Putri" },
+            { text: '"Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita."', author: "Clarissa Melia" },
+            { text: '"My favorite white sneakers were washed impeccably clean like brand new. The shoe cleaning service is a champion!"', author: "Kevin" },
+            { text: '"Mantap euy, 2 jam beneran keles! Baju wangi, rapi, siap dipake party lagi di Seminyak."', author: "Faris" },
+            { text: '"Absolut empfehlenswert! Super unkompliziert über WhatsApp und blitzschneller Express-Service."', author: "Maximilian" },
+            { text: '"Drivernya komunikatif bgt, pas mau sampe villa nemui kita dulu lewat telfon WA."', author: "Eko Prasetyo" },
+            { text: '"The courier was very polite and punctual. The fragrance is also premium, unlike ordinary laundries."', author: "Anita" },
+            { text: '"Kualitas setrikanya juara sih, lipatannya presisi banget rapi pas dimasukkkan ke koper."', author: "Tari" },
+            { text: '"At first I hesitated trying a 2-hour wash, but it really finished and dried completely! Absolute top-notch service!"', author: "Linda" },
+            { text: '"Worth every rupiah! Buat yang liburan singkat di Bali mending pake ini daripada pusing nyuci sendiri."', author: "Rendy K." },
+            { text: '"Fast, reliable, and my clothes have never smelled this fresh. Thank you U-Clean team!"', author: "Michael" },
+            { text: '"Suka bgt sama transparansi harganya. Di web udah jelas ada opsi kiloan & min ordernya."', author: "Indah Permata" },
+            { text: '"Nyelametin jersey bola kesayangan yang kena lumpur pas trekking. Bersih kinclong lagi!"', author: "Yudha S." },
+            { text: '"Udah langganan tiap kali ada business trip ke Denpasar. Pelayanan konsisten cepet dan bersih."', author: "Aris Munandar" },
+            { text: '"Layanan kilat 3 jamnya juga oke banget kalau ga terlalu buru-buru. Hasil tetep wangi & rapi."', author: "Mega L." },
+            { text: '"Beneran ga dicampur sama baju orang lain. Pakaian terasa lebih higienis dan segar."', author: "Kadek Suardana" },
+            { text: '"Pelayanan ramah, respon cepat, driver tepat waktu. 10/10 bintang lima!"', author: "Priscillia" },
+            { text: '"Setrika uapnya rapi banget, celana bahan ga ada lipatan ganda. Pokoknya mantap."', author: "Rudi Hartono" },
+            { text: '"Prosesnya sat-set banget. Bebas ribet buat kita yang lagi enjoy liburan di Bali."', author: "Sarah Amalia" },
+            { text: '"Satu-satunya laundry express di Sanur yang beneran tepat waktu sesuai durasi paket!"', author: "Wayan Gede" },
+            { text: '"Fast respon banget adminnya! Kebetulan lagi liburan di Sanur dan baju numpuk, dijemput langsung ke villa. 2 jam beneran kelar dan wangi banget."', author: "Agus Pratama" }
+        ];
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
@@ -1234,6 +1290,7 @@ const reviewList = [
         }
 
         function setLang(lang) {
+            currentLang = lang;
             const data = translations[lang];
             
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
@@ -1256,6 +1313,12 @@ const reviewList = [
             document.getElementById('txt-price-sub').innerText = data.priceSub;
             document.getElementById('txt-pop').innerText = data.pop;
             
+            document.getElementById('p-title-1').innerText = data.title1;
+            document.getElementById('p-title-2').innerText = data.title2;
+            document.getElementById('p-title-3').innerText = data.title3;
+            document.getElementById('p-title-4').innerText = data.title4;
+            document.getElementById('p-title-5').innerText = data.title5;
+
             document.getElementById('p-t1').innerText = data.pt1;
             document.getElementById('p-t2').innerText = data.pt2;
             document.getElementById('p-t3').innerText = data.pt3;
@@ -1267,6 +1330,9 @@ const reviewList = [
             document.getElementById('p-p3').innerText = data.pp3;
             document.getElementById('p-p4').innerText = data.pp4;
             document.getElementById('p-p5').innerText = data.pp5;
+
+            document.getElementById('unit-pair').innerText = data.unitPair;
+            document.getElementById('unit-pair-sub').innerText = data.unitPair;
 
             document.getElementById('s-h1').innerText = data.sh1; document.getElementById('s-p1').innerText = data.sp1;
             document.getElementById('s-h2').innerText = data.sh2; document.getElementById('s-p2').innerText = data.sp2;
@@ -1281,22 +1347,36 @@ const reviewList = [
 
             document.getElementById('txt-cta-btn').innerText = data.ctaBtn;
             document.getElementById('btn-wa-link').href = `https://wa.me/${phone}?text=${data.waMsg}`;
+
+            // Jika modal sedang terbuka, perbarui isinya langsung sesuai bahasa baru
+            if(document.getElementById('packageModal').style.display === 'flex' && currentPackageKey) {
+                updateModalContent(currentPackageKey);
+            }
         }
 
-        function openModal(title, time, price, desc) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalTime').innerText = time;
-            document.getElementById('modalPrice').innerText = price;
-            document.getElementById('modalDesc').innerText = desc;
+        function updateModalContent(key) {
+            const pkg = translations[currentLang].packages[key];
+            const btnText = translations[currentLang].modalWaBtnText;
+
+            document.getElementById('modalTitle').innerText = pkg.title;
+            document.getElementById('modalTime').innerText = pkg.time;
+            document.getElementById('modalPrice').innerText = pkg.price;
+            document.getElementById('modalDesc').innerText = pkg.desc;
             
-            let message = `Hello U-Clean Admin, I want to order *${title}* (${price}). Please info the pickup arrangement!`;
+            let message = `Hello U-Clean Admin, I want to order *${pkg.title}* (${pkg.price}). Please info the pickup arrangement!`;
+            document.getElementById('modalWaBtn').innerText = btnText;
             document.getElementById('modalWaBtn').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            
+        }
+
+        function openModal(key) {
+            currentPackageKey = key;
+            updateModalContent(key);
             document.getElementById('packageModal').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('packageModal').style.display = 'none';
+            currentPackageKey = null;
         }
 
         function initMarquee() {
