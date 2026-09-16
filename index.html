@@ -317,52 +317,31 @@
     .area-banner-text { font-size: 14.5px; color: rgba(255,255,255,0.7); line-height: 1.55; }
     .area-banner-text strong { color: var(--lime); }
 
-    /* ─── REVIEWS ─── */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .review-card {
-      background: var(--white);
-      border: 1px solid #e2e8f0;
+    /* ─── REVIEWS SLIDESHOW ─── */
+    .carousel-container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .review-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-    }
-    .stars {
-      color: #ffb400;
-      font-size: 16px;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-    .review-text {
-      font-size: 15px;
-      font-style: italic;
-      color: #4a5568;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .review-author {
-      font-size: 14px;
-      font-weight: 700;
-      color: #2d3748;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .verified-badge {
-      color: #10b981;
-      font-weight: 700;
-      font-size: 14px;
+    .stars { color: #ffb400; font-size: 1.2rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text { font-size: 1.1rem; color: var(--ink); line-height: 1.6; font-style: italic; margin-bottom: 24px; min-height: 80px; display: flex; align-items: center; justify-content: center; }
+    .author-info { font-weight: 700; color: var(--forest); font-size: 1rem; }
+    .author-tag { display: block; font-size: 0.8rem; color: #777; font-weight: normal; margin-top: 4px; }
+    .dots-container { display: flex; justify-content: center; gap: 6px; margin-top: 25px; }
+    .dot { width: 8px; height: 8px; background-color: #ddd; border-radius: 50%; transition: all 0.3s ease; cursor: pointer; }
+    .dot.active { background-color: var(--forest); width: 24px; border-radius: 4px; }
+    .fade { animation: fadeEffect 0.6s ease-in-out; }
+    @keyframes fadeEffect {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ─── FOOTER ─── */
@@ -392,7 +371,6 @@
     @media (max-width: 992px) {
       .paket-grid { grid-template-columns: repeat(2, 1fr); }
       .paket-grid-bottom { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 860px) {
       :root { --py: 64px; }
@@ -412,7 +390,6 @@
       .paket-grid { grid-template-columns: 1fr; }
       .paket-grid-bottom { grid-template-columns: 1fr; }
       .area-grid  { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -789,55 +766,23 @@
   </section>
 
 
-  <!-- ═══════════════ CUSTOMER REVIEWS ═══════════════ -->
+  <!-- ═══════════════ CUSTOMER REVIEWS (SLIDESHOW OTOMATIS) ═══════════════ -->
   <section class="section sec-white" id="reviews">
     <div class="wrap">
       <div class="center reveal in">
         <h2 class="sec-title" style="font-family: var(--font-body); font-weight: 700;">Customer Reviews</h2>
-        <p class="sec-desc" style="margin-bottom: 40px;">What tourists &amp; locals say about U-Clean service</p>
+        <p class="sec-desc" style="margin-bottom: 40px;">Apa kata mereka tentang layanan laundry U-Clean</p>
       </div>
 
-      <div class="reviews-grid">
-        <div class="review-card reveal in">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="review-text">"Super service rapide ! Vêtements propres et parfumés reçus en un temps record à ma villa."</p>
-          </div>
-          <div class="review-author">
-            Antoine — <span class="verified-badge">✓ Verified</span>
-          </div>
+      <div class="carousel-container reveal in">
+        <div class="stars">★★★★★</div>
+        <div id="review-content" class="fade">
+          <p class="review-text" id="text"></p>
+          <p class="author-info" id="author"></p>
         </div>
-
-        <div class="review-card reveal in">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="review-text">"Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat U-Clean urusan pakaian beres instan."</p>
-          </div>
-          <div class="review-author">
-            Ibu Ratna — <span class="verified-badge">✓ Verified</span>
-          </div>
-        </div>
-
-        <div class="review-card reveal in">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="review-text">"Super easy to order, just sent a WhatsApp message. No hassle filling out long forms, driver came right away."</p>
-          </div>
-          <div class="review-author">
-            Putri — <span class="verified-badge">✓ Verified</span>
-          </div>
-        </div>
-
-        <div class="review-card reveal in">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p class="review-text">"Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita."</p>
-          </div>
-          <div class="review-author">
-            Clarissa Melia — <span class="verified-badge">✓ Verified</span>
-          </div>
-        </div>
+        <div class="dots-container" id="dots-container"></div>
       </div>
+
     </div>
   </section>
 
@@ -873,6 +818,59 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══════════════ SCRIPT SLIDESHOW REVIEWS ═══════════════ -->
+  <script>
+    const reviews = [
+      { text: "“Bahan kaosnya adem banget pas abis dicuci, sablonannya tetap halus dan nggak luntur. Bakal langganan terus sih!”", author: "Rian S.", tag: "Pembeli Terverifikasi" },
+      { text: "“Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat U-Clean urusan pakaian beres instan.”", author: "Ibu Ratna", tag: "Pembeli Terverifikasi" },
+      { text: "“Jahitannya tetep rapi, kainnya jadi ekstra lembut dipakainya. Kirim dari Bintaro ke U-Clean dapet free pickup mantap.”", author: "Dimas A.", tag: "Pembeli Terverifikasi" },
+      { text: "“The quality of cleaning is surprisingly good! Material feels premium, smells fresh, and fits perfectly.”", author: "Alex M.", tag: "Verified Buyer" },
+      { text: "“Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita.”", author: "Clarissa Melia", tag: "Pembeli Terverifikasi" },
+      { text: "“Pengiriman cepat, admin WA-nya ramah banget pas ditanya-tanya jam penjemputan. Recommended bangett!”", author: "Dina L.", tag: "Pembeli Terverifikasi" },
+      { text: "“Awalnya ragu mau coba eco laundry, tapi pas barang nyampe ternyata harumnya alami &amp; halus banget di kain.”", author: "Bagas K.", tag: "Pembeli Terverifikasi" },
+      { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Sarah W.", tag: "Verified Buyer" },
+      { text: "“Hasil cuci sepatu dan bajunya wangi banget, nggak bau apek sama sekali walau cuaca lagi hujan terus.”", author: "Andi P.", tag: "Pembeli Terverifikasi" },
+      { text: "“Worth it banget sama harganya. Udah gratis antar jemput, pengerjaannya juga super ngebut. Thanks U-Clean!”", author: "Maya R.", tag: "Pembeli Terverifikasi" }
+    ];
+
+    let currentIndex = 0;
+    const textEl = document.getElementById("text");
+    const authorEl = document.getElementById("author");
+    const reviewContent = document.getElementById("review-content");
+    const dotsContainer = document.getElementById("dots-container");
+
+    reviews.forEach((_, index) => {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (index === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => showReview(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    function showReview(index) {
+      currentIndex = index;
+      reviewContent.classList.remove("fade");
+      void reviewContent.offsetWidth; 
+      reviewContent.classList.add("fade");
+
+      textEl.innerHTML = reviews[currentIndex].text;
+      authorEl.innerHTML = `${reviews[currentIndex].author} — <span class="author-tag">✓ ${reviews[currentIndex].tag}</span>`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    showReview(0);
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % reviews.length;
+      showReview(currentIndex);
+    }, 4000);
+  </script>
 
 </body>
 </html>
