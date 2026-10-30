@@ -3,8 +3,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>U-Clean — Eco Premium Laundry</title>
-  <meta name="description" content="U-Clean - Laundry eco premium dengan deterjen berbasis pohon. Hasil extra soft, gratis antar jemput Bintaro, Alam Sutera, BSD, dan Karawaci.">
+  <title>Bali Clean Laundry — Eco Premium Laundry</title>
+  <meta name="description" content="Bali Clean Laundry - Laundry eco premium dengan deterjen berbasis pohon. Hasil extra soft, gratis antar jemput wilayah Bali dan sekitarnya.">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=DM+Mono&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -27,6 +27,7 @@
       --gray-300:    #c2c6bb;
       --gray-100:    #f5f6f3;
       --white:       #ffffff;
+      --wa-green:    #25D366;
 
       --font-logo: 'Baloo 2', 'Arial Rounded MT Bold', sans-serif;
       --font-head: 'Playfair Display', Georgia, serif;
@@ -51,7 +52,7 @@
     /* ─── NAVBAR ─── */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 68px;
+      height: 72px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 36px;
       background: rgba(255,255,255,0.95);
@@ -62,7 +63,8 @@
     }
     .nav.scrolled { box-shadow: 0 2px 24px rgba(0,88,64,0.08); }
 
-    .nav-logo { display: flex; align-items: center; }
+    .nav-logo { display: flex; align-items: center; height: 48px; }
+    .nav-logo img { height: 100%; width: auto; object-fit: contain; }
 
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-700); transition: color 0.2s; }
@@ -79,7 +81,7 @@
 
     /* ─── BUTTONS ─── */
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-family: var(--font-body); font-weight: 600;
       border-radius: var(--radius-md); border: none; cursor: pointer;
       transition: all 0.2s; text-decoration: none;
@@ -91,9 +93,71 @@
     .btn-outline { background: transparent; color: var(--forest); padding: 14px 30px; font-size: 15px; border: 2px solid var(--forest); }
     .btn-outline:hover { background: var(--forest); color: var(--white); }
 
-    /* ─── HERO ─── */
+    /* Tombol Order Paket */
+    .btn-order-paket {
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: var(--forest);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-order-paket:hover {
+      background: var(--wa-green);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+
+    /* ─── FLOATING WHATSAPP BUTTON ─── */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: var(--wa-green);
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      animation: pulse 2.5s infinite;
+    }
+    .floating-wa:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+      background: #20bd5a;
+    }
+    .floating-wa svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ─── HERO DENGAN BACKGROUND GAMBAR TRANSPARAN ─── */
     .hero {
-      background: var(--forest-pale);
+      background: linear-gradient(rgba(238, 247, 244, 0.92), rgba(238, 247, 244, 0.92)), url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
       min-height: 100vh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
@@ -102,22 +166,9 @@
       position: relative; overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute; top: -15%; right: -10%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(209,248,67,0.18) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -15%; left: -10%;
-      width: 480px; height: 480px;
-      background: radial-gradient(circle, rgba(0,88,64,0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .hero-logo { margin: 0 auto 24px; animation: fadeUp 0.7s ease both; position: relative; z-index: 1; max-width: 320px; }
+    .hero-logo img { width: 100%; height: auto; object-fit: contain; }
 
-    .hero-logo { margin: 0 auto 32px; animation: fadeUp 0.7s ease both; position: relative; z-index: 1; }
     .hero-eyebrow {
       font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
       font-weight: 700; color: var(--forest); margin-bottom: 18px;
@@ -189,6 +240,43 @@
     .center { text-align: center; }
     .center .sec-desc { margin-left: auto; margin-right: auto; }
 
+    /* ─── HARGA ─── */
+    .paket-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
+      margin-bottom: 24px;
+    }
+    .paket-grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .paket {
+      background: var(--white); border: 1.5px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius-lg); padding: 32px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .paket:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,88,64,0.1); }
+    .paket.best  { border-color: var(--forest); border-width: 2px; background: var(--forest-pale); }
+    .paket-badge {
+      display: inline-block; margin-bottom: 14px; align-self: flex-start;
+      background: #0088cc; color: var(--white);
+      font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .paket-name  { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .paket-service { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
+    .paket-price { font-family: var(--font-mono); font-size: 26px; color: var(--forest); font-weight: 700; }
+    .paket-price small { font-family: var(--font-body); font-size: 14px; color: var(--gray-500); font-weight: 400; }
+    .paket-lbs { font-size: 12px; color: var(--gray-500); margin-bottom: 16px; }
+    .p-line { height: 1px; background: rgba(0,0,0,0.06); margin: 16px 0; }
+    .paket-min { font-size: 13px; font-weight: 600; color: var(--forest); }
+
     /* ─── KEUNGGULAN ─── */
     .cards-6 {
       display: grid;
@@ -237,43 +325,6 @@
     }
     .step-title { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
     .step-desc  { font-size: 14px; color: var(--gray-500); line-height: 1.65; max-width: 200px; }
-
-    /* ─── HARGA ─── */
-    .paket-grid { 
-      display: grid; 
-      grid-template-columns: repeat(4, 1fr); 
-      gap: 20px; 
-      margin-bottom: 24px;
-    }
-    .paket-grid-bottom {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .paket {
-      background: var(--white); border: 1.5px solid rgba(0,0,0,0.07);
-      border-radius: var(--radius-lg); padding: 32px 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .paket:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,88,64,0.1); }
-    .paket.best  { border-color: var(--forest); border-width: 2px; background: var(--forest-pale); }
-    .paket-badge {
-      display: inline-block; margin-bottom: 14px; align-self: flex-start;
-      background: #0088cc; color: var(--white);
-      font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 100px;
-    }
-    .paket-name  { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-    .paket-service { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
-    .paket-price { font-family: var(--font-mono); font-size: 26px; color: var(--forest); font-weight: 700; }
-    .paket-price small { font-family: var(--font-body); font-size: 14px; color: var(--gray-500); font-weight: 400; }
-    .paket-lbs { font-size: 12px; color: var(--gray-500); margin-bottom: 16px; }
-    .p-line { height: 1px; background: rgba(0,0,0,0.06); margin: 16px 0; }
-    .paket-min { font-size: 13px; font-weight: 600; color: var(--forest); }
 
     /* ─── SPLIT FEATURE ─── */
     .split-sec { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
@@ -350,7 +401,15 @@
       display: grid; grid-template-columns: 1.5fr 1fr 1fr;
       gap: 48px; margin-bottom: 48px;
     }
-    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 12px; max-width: 250px; line-height: 1.6; }
+    .footer-logo img {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+    }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; max-width: 280px; line-height: 1.6; }
     .footer-col h5 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; font-weight: 600; }
     .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
     .footer-col li a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
@@ -367,7 +426,7 @@
     @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
     @keyframes scrollPulse { 0%,100%{opacity:.3;} 50%{opacity:.8;} }
 
-    /* ─── RESPONSIVE ─── */
+    /* ─── MOBILE & RESPONSIVE OPTIMIZATION ─── */
     @media (max-width: 992px) {
       .paket-grid { grid-template-columns: repeat(2, 1fr); }
       .paket-grid-bottom { grid-template-columns: repeat(2, 1fr); }
@@ -384,36 +443,46 @@
       .footer-bottom { flex-direction: column; text-align: center; }
       .wrap { padding: 0 20px; }
       .hero { padding: 100px 20px 72px; }
-      .hero-cta { flex-direction: column; align-items: center; }
+      .hero-cta { flex-direction: column; align-items: center; width: 100%; }
+      .hero-cta .btn { width: 100%; }
     }
     @media (max-width: 576px) {
       .paket-grid { grid-template-columns: 1fr; }
       .paket-grid-bottom { grid-template-columns: 1fr; }
       .area-grid  { grid-template-columns: repeat(2, 1fr); }
+      .floating-wa span { display: inline; }
+      .floating-wa { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 14px; }
+      .carousel-container { padding: 24px 16px; }
+      .review-text { font-size: 0.95rem; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- ═══════════════ FLOATING WA BUTTON ═══════════════ -->
+  <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20tanya%20layanan%20laundry" target="_blank" rel="noopener" class="floating-wa" aria-label="Order via WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+    <span>Order Now</span>
+  </a>
+
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav class="nav scrolled" id="nav">
-    <a href="#" class="nav-logo" aria-label="U-Clean Home">
-      <svg viewBox="0 0 240 54" width="180" height="40" aria-hidden="true">
-        <path d="M 12,28 A 20,20 0 0,1 52,28" fill="none" stroke="#d1f843" stroke-width="6" stroke-linecap="round"></path>
-        <text x="120" y="38" text-anchor="middle" font-family="'Baloo 2','Arial Rounded MT Bold',sans-serif" font-weight="800" font-size="24" fill="#005840">U-Clean</text>
-      </svg>
+    <a href="#" class="nav-logo" aria-label="Bali Clean Laundry Home">
+      <img src="logo.png" alt="Bali Clean Laundry Logo">
     </a>
 
     <ul class="nav-links">
+      <li><a href="#harga">Harga</a></li>
       <li><a href="#layanan">Layanan</a></li>
       <li><a href="#cara-pesan">Cara Pesan</a></li>
-      <li><a href="#harga">Harga</a></li>
       <li><a href="#area">Area</a></li>
       <li><a href="#reviews">Ulasan</a></li>
     </ul>
 
-    <a href="https://wa.me/6287819999580" target="_blank" rel="noopener" class="btn-nav">
+    <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20tanya%20layanan%20laundry" target="_blank" rel="noopener" class="btn-nav">
       💬 Pesan Sekarang
     </a>
   </nav>
@@ -422,12 +491,8 @@
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero" id="home">
 
-    <!-- Logo besar -->
     <div class="hero-logo">
-      <svg viewBox="0 0 600 160" width="480" height="128" aria-label="U-Clean">
-        <path d="M 60,80 A 48,48 0 0,1 156,80" fill="none" stroke="#d1f843" stroke-width="13" stroke-linecap="round"></path>
-        <text x="300" y="110" text-anchor="middle" font-family="'Baloo 2','Arial Rounded MT Bold',sans-serif" font-weight="800" font-size="64" fill="#005840">U-Clean</text>
-      </svg>
+      <img src="logo.png" alt="Bali Clean Laundry Logo">
     </div>
 
     <p class="hero-eyebrow">Eco Premium Laundry</p>
@@ -442,26 +507,112 @@
     </p>
 
     <div class="hero-cta">
-      <a href="https://wa.me/6287819999580" target="_blank" rel="noopener" class="btn btn-forest">
+      <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20laundry" target="_blank" rel="noopener" class="btn btn-forest">
         💬 Pesan via WhatsApp
       </a>
-      <a href="#cara-pesan" class="btn btn-outline">
-        Cara Pesan →
+      <a href="#harga" class="btn btn-outline">
+        Lihat Harga →
       </a>
     </div>
 
     <div class="hero-areas">
-      <div class="area-pill"><span class="dot"></span>Bintaro</div>
-      <div class="area-pill"><span class="dot"></span>Gading Serpong</div>
-      <div class="area-pill"><span class="dot"></span>Karawaci</div>
-      <div class="area-pill"><span class="dot"></span>BSD</div>
-      <div class="area-pill"><span class="dot"></span>Alam Sutera</div>
-      <div class="area-pill"><span class="dot"></span>Citra Raya</div>
+      <div class="area-pill"><span class="dot"></span>Denpasar</div>
+      <div class="area-pill"><span class="dot"></span>Kuta</div>
+      <div class="area-pill"><span class="dot"></span>Seminyak</div>
+      <div class="area-pill"><span class="dot"></span>Canggu</div>
+      <div class="area-pill"><span class="dot"></span>Sanur</div>
+      <div class="area-pill"><span class="dot"></span>Ubud</div>
     </div>
 
     <div class="hero-scroll">
       <div class="scroll-bar"></div>
       <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ HARGA ═══════════════ -->
+  <section class="section sec-pale" id="harga">
+    <div class="wrap">
+      <div class="reveal in">
+        <p class="eyebrow">Daftar Harga</p>
+        <h2 class="sec-title">Pilihan Layanan Bali Clean Laundry</h2>
+        <p class="sec-desc">Harga transparan sesuai kecepatan layanan dan kebutuhan Anda.</p>
+      </div>
+
+      <!-- 3 Paket Express -->
+      <div class="paket-grid">
+
+        <div class="paket best reveal in">
+          <span class="paket-badge">MOST POPULAR</span>
+          <div>
+            <div class="paket-name">Ultra Express</div>
+            <div class="paket-service">3–Hour Service</div>
+          </div>
+          <div>
+            <div class="paket-price">Rp 80.000 <small>/ Kg</small></div>
+            <div class="paket-lbs">(≈ 2.2 lbs)</div>
+            <div class="p-line"></div>
+            <div class="paket-min">*Minimum order 2.2 kg</div>
+            <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20Paket%20Ultra%20Express%20(3%20Jam)%20-%20Rp%2080.000%2Fkg.%20Mohon%20informasi%20untuk%20jadwal%20penjemputan." target="_blank" rel="noopener" class="btn-order-paket">
+              💬 Order Paket Ini
+            </a>
+          </div>
+        </div>
+
+        <div class="paket reveal in">
+          <div>
+            <div class="paket-name">Express 6–Hour</div>
+            <div class="paket-service">6–Hour Service</div>
+          </div>
+          <div>
+            <div class="paket-price">Rp 50.000 <small>/ Kg</small></div>
+            <div class="paket-lbs">(≈ 2.2 lbs)</div>
+            <div class="p-line"></div>
+            <div class="paket-min">*Minimum order 3 kg</div>
+            <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20Paket%20Express%20(6%20Jam)%20-%20Rp%2050.000%2Fkg.%20Mohon%20informasi%20untuk%20jadwal%20penjemputan." target="_blank" rel="noopener" class="btn-order-paket">
+              💬 Order Paket Ini
+            </a>
+          </div>
+        </div>
+
+        <div class="paket reveal in">
+          <div>
+            <div class="paket-name">Express 12–Hour</div>
+            <div class="paket-service">12–Hour Service</div>
+          </div>
+          <div>
+            <div class="paket-price">Rp 35.000 <small>/ Kg</small></div>
+            <div class="paket-lbs">(≈ 2.2 lbs)</div>
+            <div class="p-line"></div>
+            <div class="paket-min">*Minimum order 3.9 kg</div>
+            <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20Paket%20Express%20(12%20Jam)%20-%20Rp%2035.000%2Fkg.%20Mohon%20informasi%20untuk%20jadwal%20penjemputan." target="_blank" rel="noopener" class="btn-order-paket">
+              💬 Order Paket Ini
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Layanan Sepatu -->
+      <div class="paket-grid-bottom">
+        <div class="paket reveal in">
+          <div>
+            <div class="paket-name">Shoe Service</div>
+            <div class="paket-service">24–Hour Shoe Wash</div>
+          </div>
+          <div>
+            <div class="paket-price">Rp 60.000 <small>/ Pair</small></div>
+            <div class="paket-lbs">/ Pair</div>
+            <div class="p-line"></div>
+            <div class="paket-min" style="color:var(--gray-700); font-weight:400;">Premium shoe cleaning</div>
+            <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20Layanan%20Shoe%20Service%20(24%20Jam)%20-%20Rp%2060.000%2Fpasang.%20Mohon%20informasi%20untuk%20jadwal%20penjemputan." target="_blank" rel="noopener" class="btn-order-paket">
+              💬 Order Layanan Ini
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -475,7 +626,7 @@
           <p class="eyebrow">Aman untuk Keluarga</p>
           <h2 class="sec-title">Lembut untuk si kecil,<br>aman untuk semua.</h2>
           <p style="font-size:16px; color:var(--gray-500); line-height:1.7; margin-bottom:32px; max-width:460px;">
-            Dari sprei bayi hingga seragam sekolah — deterjen pohon U-Clean bebas bahan kimia keras,
+            Dari sprei bayi hingga pakaian liburan — deterjen pohon Bali Clean Laundry bebas bahan kimia keras,
             pewangi sintetis, dan residu yang merusak serat kain.
           </p>
           <div class="split-bullets">
@@ -489,16 +640,16 @@
             </div>
             <div class="split-bullet">
               <div class="split-bullet-icon">✨</div>
-              <div class="split-bullet-text"><strong>Extra soft guarantee</strong> — linen dan kain anak terasa lembut nyata setiap pencucian</div>
+              <div class="split-bullet-text"><strong>Extra soft guarantee</strong> — linen dan pakaian terasa lembut nyata setiap pencucian</div>
             </div>
           </div>
-          <a href="https://wa.me/6287819999580" target="_blank" rel="noopener" class="btn btn-forest">
+          <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20tanya-tanya%20mengenai%20laundry%20pakaian%20anak%20%26%20linen." target="_blank" rel="noopener" class="btn btn-forest">
             💬 Tanya Lebih Lanjut
           </a>
         </div>
 
         <div class="split-img-wrap reveal in">
-          <img src="KIDS LINEN.jpg" alt="Anak merapikan linen bersih di tempat tidur — hasil cuci U-Clean" loading="lazy">
+          <img src="KIDS LINEN.jpg" alt="Anak merapikan linen bersih di tempat tidur — hasil cuci Bali Clean Laundry" loading="lazy">
         </div>
 
       </div>
@@ -510,7 +661,7 @@
   <section class="section sec-white" id="layanan">
     <div class="wrap">
       <div class="reveal in">
-        <p class="eyebrow">Mengapa U-Clean</p>
+        <p class="eyebrow">Mengapa Bali Clean Laundry</p>
         <h2 class="sec-title">Berbeda dari laundry biasa.</h2>
         <p class="sec-desc">
           Kami merawat pakaianmu dengan formula berbasis alam yang lebih lembut
@@ -571,7 +722,7 @@
             </svg>
           </div>
           <div class="kcard-title">Selesai Tepat Waktu</div>
-          <div class="kcard-desc">Layanan ultra express mulai 2 jam. Terlambat? Kami kembalikan biayamu — tanpa pertanyaan.</div>
+          <div class="kcard-desc">Layanan ultra express mulai 3 jam. Terlambat? Kami kembalikan biayamu — tanpa pertanyaan.</div>
           <span class="kcard-tag">⏱️ On-Time Promise</span>
         </div>
 
@@ -622,97 +773,10 @@
       </div>
 
       <div class="center reveal in" style="margin-top:52px;">
-        <a href="https://wa.me/6287819999580" target="_blank" rel="noopener" class="btn btn-forest">
+        <a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20order%20laundry%20antar%20jemput" target="_blank" rel="noopener" class="btn btn-forest">
           💬 Pesan Sekarang via WA
         </a>
       </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════ HARGA ═══════════════ -->
-  <section class="section sec-pale" id="harga">
-    <div class="wrap">
-      <div class="reveal in">
-        <p class="eyebrow">Daftar Harga</p>
-        <h2 class="sec-title">Pilihan Layanan U-Clean</h2>
-        <p class="sec-desc">Harga transparan sesuai kecepatan layanan dan kebutuhan Anda.</p>
-      </div>
-
-      <!-- 4 Paket Express -->
-      <div class="paket-grid">
-
-        <div class="paket best reveal in">
-          <span class="paket-badge">MOST POPULAR</span>
-          <div>
-            <div class="paket-name">Ultra Express</div>
-            <div class="paket-service">2–Hour Service</div>
-          </div>
-          <div>
-            <div class="paket-price">Rp 60.000 <small>/ Kg</small></div>
-            <div class="paket-lbs">(≈ 2.2 lbs)</div>
-            <div class="p-line"></div>
-            <div class="paket-min">*Minimum order 2 kg</div>
-          </div>
-        </div>
-
-        <div class="paket reveal in">
-          <div>
-            <div class="paket-name">Express 3–Hour</div>
-            <div class="paket-service">3–Hour Service</div>
-          </div>
-          <div>
-            <div class="paket-price">Rp 50.000 <small>/ Kg</small></div>
-            <div class="paket-lbs">(≈ 2.2 lbs)</div>
-            <div class="p-line"></div>
-            <div class="paket-min">*Minimum order 2.2 kg</div>
-          </div>
-        </div>
-
-        <div class="paket reveal in">
-          <div>
-            <div class="paket-name">Express 6–Hour</div>
-            <div class="paket-service">6–Hour Service</div>
-          </div>
-          <div>
-            <div class="paket-price">Rp 40.000 <small>/ Kg</small></div>
-            <div class="paket-lbs">(≈ 2.2 lbs)</div>
-            <div class="p-line"></div>
-            <div class="paket-min">*Minimum order 3 kg</div>
-          </div>
-        </div>
-
-        <div class="paket reveal in">
-          <div>
-            <div class="paket-name">Express 12–Hour</div>
-            <div class="paket-service">12–Hour Service</div>
-          </div>
-          <div>
-            <div class="paket-price">Rp 30.000 <small>/ Kg</small></div>
-            <div class="paket-lbs">(≈ 2.2 lbs)</div>
-            <div class="p-line"></div>
-            <div class="paket-min">*Minimum order 3.9 kg</div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Layanan Sepatu -->
-      <div class="paket-grid-bottom">
-        <div class="paket reveal in">
-          <div>
-            <div class="paket-name">Shoe Service</div>
-            <div class="paket-service">24–Hour Shoe Wash</div>
-          </div>
-          <div>
-            <div class="paket-price">Rp 60.000 <small>/ Pair</small></div>
-            <div class="paket-lbs">/ Pair</div>
-            <div class="p-line"></div>
-            <div class="paket-min" style="color:var(--gray-700); font-weight:400;">Premium shoe cleaning</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -724,42 +788,42 @@
         <p class="eyebrow eyebrow-lime">Area Layanan</p>
         <h2 class="sec-title sec-title-white">Kami jemput, kami antar.</h2>
         <p class="sec-desc sec-desc-white">
-          Gratis pickup dan delivery untuk semua order. Tidak ada biaya tambahan jarak.
+          Gratis pickup dan delivery untuk semua order di wilayah Bali. Tidak ada biaya tambahan jarak.
         </p>
       </div>
 
       <div class="area-grid reveal in">
         <div class="area-card">
-          <span class="area-em">🏡</span>
-          <div class="area-nm">Bintaro</div>
-          <div class="area-sub">Sektor 1 - 9</div>
-        </div>
-        <div class="area-card">
-          <span class="area-em">🏢</span>
-          <div class="area-nm">Gading Serpong</div>
-          <div class="area-sub">All Cluster</div>
-        </div>
-        <div class="area-card">
-          <span class="area-em">🌳</span>
-          <div class="area-nm">BSD City</div>
-          <div class="area-sub">Tahap 1 &amp; 2</div>
-        </div>
-        <div class="area-card">
-          <span class="area-em">✨</span>
-          <div class="area-nm">Alam Sutera</div>
+          <span class="area-em">🏝️</span>
+          <div class="area-nm">Denpasar</div>
           <div class="area-sub">All Area</div>
         </div>
         <div class="area-card">
-          <span class="area-em">🎓</span>
-          <div class="area-nm">Karawaci</div>
-          <div class="area-sub">Lippo &amp; Sekitar</div>
+          <span class="area-em">🏄</span>
+          <div class="area-nm">Kuta</div>
+          <div class="area-sub">Legian &amp; Tuban</div>
+        </div>
+        <div class="area-card">
+          <span class="area-em">🌅</span>
+          <div class="area-nm">Seminyak</div>
+          <div class="area-sub">Petitenget</div>
+        </div>
+        <div class="area-card">
+          <span class="area-em">🌴</span>
+          <div class="area-nm">Canggu</div>
+          <div class="area-sub">Pererenan &amp; Berawa</div>
+        </div>
+        <div class="area-card">
+          <span class="area-em">🏖️</span>
+          <div class="area-nm">Sanur &amp; Ubud</div>
+          <div class="area-sub">Central Area</div>
         </div>
       </div>
 
       <div class="area-banner reveal in">
         <div class="area-banner-icon">📍</div>
         <div class="area-banner-text">
-          Area kamu belum tercantum? <strong>Hubungi kami di WhatsApp</strong> — kami terus memperluas jangkauan antar-jemput U-Clean.
+          Area kamu belum tercantum? <strong>Hubungi kami di WhatsApp</strong> — kami terus memperluas jangkauan antar-jemput Bali Clean Laundry.
         </div>
       </div>
     </div>
@@ -771,7 +835,7 @@
     <div class="wrap">
       <div class="center reveal in">
         <h2 class="sec-title" style="font-family: var(--font-body); font-weight: 700;">Customer Reviews</h2>
-        <p class="sec-desc" style="margin-bottom: 40px;">Apa kata mereka tentang layanan laundry U-Clean</p>
+        <p class="sec-desc" style="margin-bottom: 40px;">Apa kata mereka tentang layanan Bali Clean Laundry</p>
       </div>
 
       <div class="carousel-container reveal in">
@@ -792,15 +856,18 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <h4 style="color:var(--white); font-family:var(--font-logo); font-size:24px;">U-Clean</h4>
-          <p class="footer-tagline">Laundry eco-premium dengan perawatan ekstra lembut berbasis bahan alami.</p>
+          <!-- Logo disisipkan di sini -->
+          <div class="footer-logo">
+            <img src="logo-footer.png" alt="Bali Clean Laundry Logo">
+          </div>
+          <p class="footer-tagline">Laundry eco-premium dengan perawatan ekstra lembut berbasis bahan alami di Bali.</p>
         </div>
         <div class="footer-col">
           <h5>Menu</h5>
           <ul>
+            <li><a href="#harga">Harga</a></li>
             <li><a href="#layanan">Layanan</a></li>
             <li><a href="#cara-pesan">Cara Pesan</a></li>
-            <li><a href="#harga">Harga</a></li>
             <li><a href="#area">Area</a></li>
             <li><a href="#reviews">Ulasan</a></li>
           </ul>
@@ -808,12 +875,12 @@
         <div class="footer-col">
           <h5>Kontak</h5>
           <ul>
-            <li><a href="https://wa.me/6287819999580" target="_blank" rel="noopener">WhatsApp Us</a></li>
+            <li><a href="https://wa.me/6282241228112?text=Halo%20Bali%20Clean%20Laundry%2C%20saya%20ingin%20tanya%20layanan%20laundry" target="_blank" rel="noopener">WhatsApp Us</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copy">© 2026 U-Clean. All rights reserved.</div>
+        <div class="footer-copy">© 2026 Bali Clean Laundry. All rights reserved.</div>
         <div class="footer-eco">Deterjen berbasis pohon · <b>Eco-Friendly</b></div>
       </div>
     </div>
@@ -823,15 +890,15 @@
   <script>
     const reviews = [
       { text: "“Bahan kaosnya adem banget pas abis dicuci, sablonannya tetap halus dan nggak luntur. Bakal langganan terus sih!”", author: "Rian S.", tag: "Pembeli Terverifikasi" },
-      { text: "“Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat U-Clean urusan pakaian beres instan.”", author: "Ibu Ratna", tag: "Pembeli Terverifikasi" },
-      { text: "“Jahitannya tetep rapi, kainnya jadi ekstra lembut dipakainya. Kirim dari Bintaro ke U-Clean dapet free pickup mantap.”", author: "Dimas A.", tag: "Pembeli Terverifikasi" },
+      { text: "“Sangat terbantu! Liburan bareng anak kecil baju kotor numpuk bgt, berkat Bali Clean Laundry urusan pakaian beres instan.”", author: "Ibu Ratna", tag: "Pembeli Terverifikasi" },
+      { text: "“Jahitannya tetep rapi, kainnya jadi ekstra lembut dipakainya. Kirim dari Seminyak dapet free pickup mantap.”", author: "Dimas A.", tag: "Pembeli Terverifikasi" },
       { text: "“The quality of cleaning is surprisingly good! Material feels premium, smells fresh, and fits perfectly.”", author: "Alex M.", tag: "Verified Buyer" },
       { text: "“Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita.”", author: "Clarissa Melia", tag: "Pembeli Terverifikasi" },
       { text: "“Pengiriman cepat, admin WA-nya ramah banget pas ditanya-tanya jam penjemputan. Recommended bangett!”", author: "Dina L.", tag: "Pembeli Terverifikasi" },
       { text: "“Awalnya ragu mau coba eco laundry, tapi pas barang nyampe ternyata harumnya alami &amp; halus banget di kain.”", author: "Bagas K.", tag: "Pembeli Terverifikasi" },
       { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Sarah W.", tag: "Verified Buyer" },
       { text: "“Hasil cuci sepatu dan bajunya wangi banget, nggak bau apek sama sekali walau cuaca lagi hujan terus.”", author: "Andi P.", tag: "Pembeli Terverifikasi" },
-      { text: "“Worth it banget sama harganya. Udah gratis antar jemput, pengerjaannya juga super ngebut. Thanks U-Clean!”", author: "Maya R.", tag: "Pembeli Terverifikasi" }
+      { text: "“Worth it banget sama harganya. Udah gratis antar jemput, pengerjaannya juga super ngebut. Thanks Bali Clean Laundry!”", author: "Maya R.", tag: "Pembeli Terverifikasi" }
     ];
 
     let currentIndex = 0;
@@ -866,7 +933,6 @@
 
     showReview(0);
 
-    // Diubah menjadi 2000 (2 detik) agar lebih cepat berpindah
     setInterval(() => {
       currentIndex = (currentIndex + 1) % reviews.length;
       showReview(currentIndex);
