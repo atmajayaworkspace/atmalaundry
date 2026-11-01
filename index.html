@@ -106,8 +106,22 @@
     .btn-lime:hover { background: var(--lime-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(209,248,67,0.35); }
     .btn-forest { background: var(--forest); color: var(--white); padding: 15px 32px; font-size: 15px; }
     .btn-forest:hover { background: var(--forest-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,62,44,0.25); }
-    .btn-outline { background: transparent; color: var(--forest); padding: 14px 30px; font-size: 15px; border: 2px solid var(--forest); }
-    .btn-outline:hover { background: var(--forest); color: var(--white); }
+    
+    /* Button View Pricing dengan Background Putih Solid */
+    .btn-solid-white {
+      background: var(--white);
+      color: var(--forest);
+      padding: 14px 30px;
+      font-size: 15px;
+      border: 2px solid var(--forest);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+    .btn-solid-white:hover {
+      background: var(--forest);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 88, 64, 0.25);
+    }
 
     .btn-order-paket {
       width: 100%; margin-top: 18px; padding: 12px 16px;
@@ -119,6 +133,14 @@
     .btn-order-paket:hover {
       background: var(--wa-green); color: var(--white);
       transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+
+    /* SVG WhatsApp Icon */
+    .wa-icon-svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      flex-shrink: 0;
     }
 
     /* ─── FLOATING WHATSAPP BUTTON ─── */
@@ -141,9 +163,9 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* ─── HERO DENGAN BACKGROUND JELAS & EFEK SHADOW TEKS ─── */
+    /* ─── HERO DENGAN TITLE PUTIH + SHADOW HITAM ─── */
     .hero {
-      background: linear-gradient(rgba(238, 247, 244, 0.30), rgba(238, 247, 244, 0.30)), url('hero-bg.jpg');
+      background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)), url('hero-bg.jpg');
       background-size: cover; background-position: center;
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -155,20 +177,21 @@
 
     .hero-eyebrow {
       font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-      font-weight: 800; color: var(--forest); margin-bottom: 18px;
-      text-shadow: 0 1px 4px rgba(255,255,255,0.9);
+      font-weight: 800; color: #ffffff; margin-bottom: 18px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
       animation: fadeUp 0.7s 0.08s ease both; position: relative; z-index: 1;
     }
+    /* Title Putih dengan Shadow Hitam Kontras */
     .hero-title {
       font-family: var(--font-head); font-size: clamp(38px, 5.5vw, 68px);
-      font-weight: 700; color: #0d1110; line-height: 1.1; max-width: 660px; margin: 0 auto 18px;
-      text-shadow: 0 2px 12px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.8);
+      font-weight: 700; color: #ffffff; line-height: 1.1; max-width: 660px; margin: 0 auto 18px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 2px #000000;
       animation: fadeUp 0.7s 0.14s ease both; position: relative; z-index: 1;
     }
     .hero-sub {
-      font-size: 18px; font-weight: 500; color: #1f2421;
+      font-size: 18px; font-weight: 500; color: #ffffff;
       max-width: 480px; margin: 0 auto 40px; line-height: 1.7;
-      text-shadow: 0 1px 8px rgba(255,255,255,0.95);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
       animation: fadeUp 0.7s 0.2s ease both; position: relative; z-index: 1;
     }
     .hero-cta {
@@ -182,17 +205,17 @@
     .area-pill {
       background: rgba(255,255,255,0.95); border: 1px solid var(--forest-pale2);
       border-radius: 100px; padding: 6px 16px; font-size: 13px; color: var(--forest); font-weight: 600;
-      display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,88,64,0.1);
+      display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     .area-pill .dot { width: 6px; height: 6px; background: var(--lime-dark); border-radius: 50%; flex-shrink: 0; }
 
     .hero-scroll {
       position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: var(--gray-700); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      text-shadow: 0 1px 4px rgba(255,255,255,0.9);
+      color: #ffffff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
     }
-    .scroll-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gray-700), transparent); animation: scrollPulse 2s ease infinite; }
+    .scroll-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, #ffffff, transparent); animation: scrollPulse 2s ease infinite; }
 
     /* ─── SECTION BASE ─── */
     .section     { padding: var(--py) 0; }
@@ -450,10 +473,16 @@
     </p>
 
     <div class="hero-cta">
-      <a href="#" id="hero-wa-link" target="_blank" rel="noopener" class="btn btn-forest" data-i18n="hero_btn_wa">
-        💬 Order via WhatsApp
+      <!-- Tombol Order WhatsApp dengan Ikon SVG Asli WhatsApp -->
+      <a href="#" id="hero-wa-link" target="_blank" rel="noopener" class="btn btn-forest">
+        <svg class="wa-icon-svg" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span data-i18n="hero_btn_wa">Order via WhatsApp</span>
       </a>
-      <a href="#harga" class="btn btn-outline" data-i18n="hero_btn_pricing">
+
+      <!-- Tombol View Pricing dengan Background Putih Solid -->
+      <a href="#harga" class="btn btn-solid-white" data-i18n="hero_btn_pricing">
         View Pricing →
       </a>
     </div>
@@ -498,7 +527,7 @@
             <div class="p-line"></div>
             <div class="paket-min" data-i18n="pkg1_min">*Minimum order 2.2 kg</div>
             <a href="#" class="btn-order-paket pkg-order-btn" data-pkg-en="Ultra Express (3 Hours) - Rp 80.000/kg" data-pkg-id="Ultra Express (3 Jam) - Rp 80.000/kg">
-              💬 <span data-i18n="order_btn">Order This Package</span>
+              <span data-i18n="order_btn">Order This Package</span>
             </a>
           </div>
         </div>
@@ -514,7 +543,7 @@
             <div class="p-line"></div>
             <div class="paket-min" data-i18n="pkg2_min">*Minimum order 3 kg</div>
             <a href="#" class="btn-order-paket pkg-order-btn" data-pkg-en="Express 6-Hour - Rp 50.000/kg" data-pkg-id="Express 6 Jam - Rp 50.000/kg">
-              💬 <span data-i18n="order_btn">Order This Package</span>
+              <span data-i18n="order_btn">Order This Package</span>
             </a>
           </div>
         </div>
@@ -530,7 +559,7 @@
             <div class="p-line"></div>
             <div class="paket-min" data-i18n="pkg3_min">*Minimum order 3.9 kg</div>
             <a href="#" class="btn-order-paket pkg-order-btn" data-pkg-en="Express 12-Hour - Rp 35.000/kg" data-pkg-id="Express 12 Jam - Rp 35.000/kg">
-              💬 <span data-i18n="order_btn">Order This Package</span>
+              <span data-i18n="order_btn">Order This Package</span>
             </a>
           </div>
         </div>
@@ -550,7 +579,7 @@
             <div class="p-line"></div>
             <div class="paket-min" style="color:var(--gray-700); font-weight:400;" data-i18n="pkg4_desc">Premium shoe cleaning</div>
             <a href="#" class="btn-order-paket pkg-order-btn" data-pkg-en="Shoe Service (24 Hours) - Rp 60.000/pair" data-pkg-id="Shoe Service (24 Jam) - Rp 60.000/pasang">
-              💬 <span data-i18n="order_service_btn">Order This Service</span>
+              <span data-i18n="order_service_btn">Order This Service</span>
             </a>
           </div>
         </div>
@@ -586,7 +615,7 @@
             </div>
           </div>
           <a href="#" id="family-wa-link" target="_blank" rel="noopener" class="btn btn-forest" data-i18n="family_btn">
-            💬 Inquire More
+            Inquire More
           </a>
         </div>
 
@@ -714,7 +743,7 @@
 
       <div class="center reveal in" style="margin-top:52px;">
         <a href="#" id="steps-wa-link" target="_blank" rel="noopener" class="btn btn-forest" data-i18n="steps_btn">
-          💬 Order Now via WhatsApp
+          Order Now via WhatsApp
         </a>
       </div>
     </div>
@@ -770,7 +799,7 @@
   </section>
 
 
-  <!-- ═══════════════ CUSTOMER REVIEWS (SLIDESHOW OTOMATIS) ═══════════════ -->
+  <!-- ═══════════════ CUSTOMER REVIEWS ═══════════════ -->
   <section class="section sec-white" id="reviews">
     <div class="wrap">
       <div class="center reveal in">
@@ -839,7 +868,7 @@
         hero_eyebrow: "Eco Premium Laundry",
         hero_title: "Immaculately clean,<br>extra soft all day.",
         hero_sub: "Plant-based detergents that treat your fabrics with care — no harsh chemicals, no compromise on quality.",
-        hero_btn_wa: "💬 Order via WhatsApp",
+        hero_btn_wa: "Order via WhatsApp",
         hero_btn_pricing: "View Pricing →",
         scroll_text: "Scroll",
         pricing_eyebrow: "Pricing List",
@@ -872,7 +901,7 @@
         bullet2_text: "safe for sensitive skin, babies, and regular detergent allergies",
         bullet3_strong: "Extra soft guarantee",
         bullet3_text: "linens and clothes feel genuinely soft every single wash",
-        family_btn: "💬 Inquire More",
+        family_btn: "Inquire More",
         why_eyebrow: "Why Bali Clean Laundry",
         why_title: "Different from ordinary laundry.",
         why_desc: "We treat your clothes with natural formulas that are gentler on skin — and better for the planet.",
@@ -903,7 +932,7 @@
         step2_desc: "Your laundry is processed with plant-based detergents, expertly dried and neatly folded.",
         step3_title: "Doorstep Delivery",
         step3_desc: "Fresh, soft, fragrant garments delivered right according to your chosen schedule.",
-        steps_btn: "💬 Order Now via WhatsApp",
+        steps_btn: "Order Now via WhatsApp",
         area_eyebrow: "Service Areas",
         area_title: "We pick up, we deliver.",
         area_desc: "Free pickup and delivery for all orders across Bali. No distance surcharges.",
@@ -930,7 +959,7 @@
         hero_eyebrow: "Laundry Eco Premium",
         hero_title: "Bersih sempurna,<br>lembut sepanjang hari.",
         hero_sub: "Deterjen berbasis pohon yang merawat kain dengan lembut — tanpa bahan kimia keras, tanpa kompromi pada kualitas.",
-        hero_btn_wa: "💬 Pesan via WhatsApp",
+        hero_btn_wa: "Pesan via WhatsApp",
         hero_btn_pricing: "Lihat Harga →",
         scroll_text: "Scroll",
         pricing_eyebrow: "Daftar Harga",
@@ -963,7 +992,7 @@
         bullet2_text: "aman untuk kulit sensitif, bayi, dan alergi deterjen biasa",
         bullet3_strong: "Garansi extra lembut",
         bullet3_text: "linen dan pakaian terasa lembut nyata setiap pencucian",
-        family_btn: "💬 Tanya Lebih Lanjut",
+        family_btn: "Tanya Lebih Lanjut",
         why_eyebrow: "Mengapa Bali Clean Laundry",
         why_title: "Berbeda dari laundry biasa.",
         why_desc: "Kami merawat pakaianmu dengan formula berbasis alam yang lebih lembut untuk kulit — dan lebih baik untuk bumi.",
@@ -994,7 +1023,7 @@
         step2_desc: "Cucianmu diproses dengan deterjen pohon kami, dikeringkan dan dilipat rapi.",
         step3_title: "Antar ke Pintu",
         step3_desc: "Pakaian bersih, lembut, wangi — diantar sesuai jadwal yang kamu pilih.",
-        steps_btn: "💬 Pesan Sekarang via WA",
+        steps_btn: "Pesan Sekarang via WA",
         area_eyebrow: "Area Layanan",
         area_title: "Kami jemput, kami antar.",
         area_desc: "Gratis pickup dan delivery untuk semua order di wilayah Bali. Tidak ada biaya tambahan jarak.",
@@ -1023,7 +1052,7 @@
         { text: "“My baby's clothes were washed separately and smell gentle without triggering allergies. Recommended for families.”", author: "Clarissa Melia", tag: "Verified Buyer" },
         { text: "“Fast delivery, the WhatsApp admin was very friendly when asked about pickup times. Highly recommended!”", author: "Dina L.", tag: "Verified Buyer" },
         { text: "“Initially hesitant to try eco laundry, but when it arrived it turned out naturally fragrant & super soft.”", author: "Bagas K.", tag: "Verified Buyer" },
-        { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Sarah W.", tag: "Verified Buyer" },
+        { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Indah W.", tag: "Verified Buyer" },
         { text: "“Shoe and clothes washing smelled amazing, no musty odor at all even during continuous rain.”", author: "Andi P.", tag: "Verified Buyer" },
         { text: "“Super worth it. Free pickup & delivery, and super fast turnaround time. Thanks Bali Clean Laundry!”", author: "Maya R.", tag: "Verified Buyer" }
       ],
@@ -1035,7 +1064,7 @@
         { text: "“Baju bayi saya dicuci terpisah dan wanginya lembut ga bikin alergi. Rekomended buat yang bawa balita.”", author: "Clarissa Melia", tag: "Pembeli Terverifikasi" },
         { text: "“Pengiriman cepat, admin WA-nya ramah banget pas ditanya-tanya jam penjemputan. Recommended bangett!”", author: "Dina L.", tag: "Pembeli Terverifikasi" },
         { text: "“Awalnya ragu mau coba eco laundry, tapi pas barang nyampe ternyata harumnya alami & halus banget di kain.”", author: "Bagas K.", tag: "Pembeli Terverifikasi" },
-        { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Sarah W.", tag: "Verified Buyer" },
+        { text: "“Super easy to order, just sent a WhatsApp message. Driver came right away. Extremely convenient!”", author: "Indah W.", tag: "Verified Buyer" },
         { text: "“Hasil cuci sepatu dan bajunya wangi banget, nggak bau apek sama sekali walau cuaca lagi hujan terus.”", author: "Andi P.", tag: "Pembeli Terverifikasi" },
         { text: "“Worth it banget sama harganya. Udah gratis antar jemput, pengerjaannya juga super ngebut. Thanks Bali Clean Laundry!”", author: "Maya R.", tag: "Pembeli Terverifikasi" }
       ]
