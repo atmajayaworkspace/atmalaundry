@@ -1128,19 +1128,19 @@
       const msgGen = currentLang === 'en' ? msgEnGeneral : msgIdGeneral;
       const encodedGen = encodeURIComponent(msgGen);
 
-      document.getElementById('floating-wa-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
-      document.getElementById('nav-cta-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
-      document.getElementById('hero-wa-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
-      document.getElementById('family-wa-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
-      document.getElementById('steps-wa-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
-      document.getElementById('footer-wa-link').href = `https://wa.me/6282241228112?text=${encodedGen}`;
+      document.getElementById('floating-wa-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
+      document.getElementById('nav-cta-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
+      document.getElementById('hero-wa-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
+      document.getElementById('family-wa-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
+      document.getElementById('steps-wa-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
+      document.getElementById('footer-wa-link').href = `https://wa.me/6285641319920?text=${encodedGen}`;
 
       document.querySelectorAll('.pkg-order-btn').forEach(btn => {
         const pkgText = currentLang === 'en' ? btn.getAttribute('data-pkg-en') : btn.getAttribute('data-pkg-id');
         const prefix = currentLang === 'en' ? "Hello Dewata Clean, I would like to order " : "Halo Dewata Clean, saya ingin order ";
         const suffix = currentLang === 'en' ? ". Please inform me for pickup schedule." : ". Mohon informasi untuk jadwal penjemputan.";
         const fullMsg = encodeURIComponent(prefix + pkgText + suffix);
-        btn.href = `https://wa.me/6282241228112?text=${fullMsg}`;
+        btn.href = `https://wa.me/6285641319920?text=${fullMsg}`;
       });
 
       document.getElementById('floating-wa-text').innerText = currentLang === 'en' ? "Order Now" : "Pesan Sekarang";
