@@ -174,9 +174,9 @@
   }
 }
 
-    /* ─── HERO (PENGURANGAN JARAK ATAS BAWAH LOGO & OVERLAY SEPERTI SEMULA) ─── */
+    /* ─── HERO (LATAR BELAKANG GAMBAR TRANSPARAN / OVERLAY) ─── */
     .hero {
-      background: linear-gradient(rgba(0, 30, 22, 0.60), rgba(0, 30, 22, 0.72)), url('hero-bg1ng');
+      background: linear-gradient(rgba(0, 30, 22, 0.55), rgba(0, 30, 22, 0.70)), url('hero-bg1ng');
       background-size: cover; background-position: center;
       min-height: 55vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -272,7 +272,7 @@
     .center { text-align: center; }
     .center .sec-desc { margin-left: auto; margin-right: auto; }
 
-    /* ─── HARGA (JUDUL DI-BOLD 600, SERVICE DI-BOLD 600) ─── */
+    /* ─── HARGA ─── */
     .paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
     .paket-grid-bottom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .paket {
@@ -380,7 +380,7 @@
     .area-banner-text { font-family: var(--font-body); font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.9); line-height: 1.55; }
     .area-banner-text strong { color: var(--forest-pale); font-weight: 600; }
 
-    /* ─── REVIEWS SLIDESHOW (BINTANG GOLD #FFB400) ─── */
+    /* ─── REVIEWS SLIDESHOW ─── */
     .carousel-container {
       width: 100%; max-width: 680px; margin: 0 auto; background: var(--white);
       border-radius: var(--radius-lg); border: 1px solid rgba(23,79,64,0.1);
@@ -493,7 +493,7 @@
   </nav>
 
 
-  <!-- ═══════════════ HERO (JARAK ATAS & BAWAH LOGO DIPPENDEK) ═══════════════ -->
+  <!-- ═══════════════ HERO SECTION DENGAN BACKGROUND GAMBAR ═══════════════ -->
   <section class="hero" id="home">
     <div class="hero-logo">
       <img src="logo-footer2.png" alt="Dewata Clean Logo">
@@ -622,7 +622,7 @@
           </div>
         </div>
 
-<div class="paket reveal in">
+        <div class="paket reveal in">
           <div>
             <div class="paket-name" data-i18n="pkg4_name">Shoe Service</div>
             <div class="paket-service" data-i18n="pkg4_time">6–12 Hours Shoe Wash</div>
@@ -636,6 +636,7 @@
             </a>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -1204,7 +1205,6 @@
     setLanguage('en');
     showReview(0);
 
-    // Kecepatan slideshow 2000ms (2 detik)
     setInterval(() => {
       const currentReviews = reviewsData[currentLang];
       currentIndex = (currentIndex + 1) % currentReviews.length;
