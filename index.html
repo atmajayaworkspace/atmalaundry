@@ -190,8 +190,9 @@
     }
     
     .hero-title {
-      font-family: var(--font-head); font-size: clamp(38px, 5vw, 64px);
-      font-weight: 600; color: #ffffff; line-height: 1.05; max-width: 950px; margin: 0 auto 14px;
+      font-family: var(--font-head); font-size: clamp(36px, 4.8vw, 62px);
+      font-weight: 600; color: #ffffff; line-height: 1.08; max-width: 980px; margin: 0 auto 14px;
+      font-variant-numeric: lining-nums;
       -webkit-text-stroke: 0;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       animation: fadeUp 0.7s 0.14s ease both; position: relative; z-index: 1;
@@ -246,6 +247,7 @@
     .sec-title {
       font-family: var(--font-head); font-size: clamp(32px, 4.5vw, 48px);
       font-weight: 600; line-height: 1.1; margin-bottom: 14px;
+      font-variant-numeric: lining-nums;
     }
     .sec-title-white { color: var(--white); }
     .sec-desc {
@@ -273,7 +275,11 @@
       letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
     }
     
-    .paket-name  { font-family: var(--font-head); font-size: 26px; font-weight: 600; color: var(--ink); margin-bottom: 2px; line-height: 1.2; }
+    .paket-name  { 
+      font-family: var(--font-head); font-size: 26px; font-weight: 700; 
+      color: var(--ink); margin-bottom: 2px; line-height: 1.2; 
+      font-variant-numeric: lining-nums;
+    }
     .paket-service { font-family: var(--font-body); font-size: 13px; color: var(--gray-500); margin-bottom: 16px; font-weight: 400; }
     .paket-price { font-family: var(--font-body); font-size: 26px; color: var(--forest); font-weight: 600; }
     .paket-price small { font-family: var(--font-body); font-size: 14px; color: var(--gray-500); font-weight: 400; }
@@ -477,7 +483,7 @@
     <p class="hero-eyebrow" data-i18n="hero_eyebrow">Eco Premium Laundry</p>
 
     <h1 class="hero-title" data-i18n="hero_title">
-      24 Hour Express Laundry, Ready Anytime You Are.
+      24 Hour Express Laundry,<br>Ready Anytime You Are.
     </h1>
 
     <p class="hero-sub" data-i18n="hero_sub">
@@ -896,7 +902,7 @@
         nav_reviews: "Reviews",
         nav_cta: "Order Now",
         hero_eyebrow: "Eco Premium Laundry",
-        hero_title: "24 Hour Express Laundry, Ready Anytime You Are.",
+        hero_title: "24 Hour Express Laundry,<br>Ready Anytime You Are.",
         hero_sub: "Plant-based detergents that treat your fabrics with care — no harsh chemicals, no compromise on quality.",
         hero_btn_wa: "Order via WhatsApp",
         hero_btn_pricing: "View Pricing →",
@@ -988,7 +994,7 @@
         nav_reviews: "Ulasan",
         nav_cta: "Pesan Sekarang",
         hero_eyebrow: "Laundry Eco Premium",
-        hero_title: "Laundry Express 24 Jam, Lembut Sepanjang Hari.",
+        hero_title: "Laundry Express 24 Jam,<br>Lembut Sepanjang Hari.",
         hero_sub: "Deterjen berbasis pohon yang merawat kain dengan lembut — tanpa bahan kimia keras, tanpa kompromi pada kualitas.",
         hero_btn_wa: "Pesan via WhatsApp",
         hero_btn_pricing: "Lihat Harga →",
@@ -1040,7 +1046,7 @@
         f3_desc: "Formula biodegradable yang terurai alami, hemat air hingga 30% dibanding laundry konvensional.",
         f3_tag: "💧 Hemat Air 30%",
         f4_title: "Gratis Antar Jemput",
-        f4_desc: "Not perlu keluar rumah. Kami jemput, cuci, dan antar balik ke pintumu tanpa biaya tambahan.",
+        f4_desc: "Tidak perlu keluar rumah. Kami jemput, cuci, dan antar balik ke pintumu tanpa biaya tambahan.",
         f4_tag: "🚐 Free Pickup",
         f5_title: "Selesai Tepat Waktu",
         f5_desc: "Layanan hyper express mulai 2 jam. Terlambat? Kami kembalikan biayamu — tanpa pertanyaan.",
@@ -1148,7 +1154,7 @@
     }
 
     let currentIndex = 0;
-    const textEl =, document.getElementById("text");
+    const textEl = document.getElementById("text");
     const authorEl = document.getElementById("author");
     const reviewContent = document.getElementById("review-content");
     const dotsContainer = document.getElementById("dots-container");
