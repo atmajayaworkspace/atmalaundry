@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="meta-title">Dewata Clean Laundry | Pickup, Delivery &amp; Express Laundry Bali</title>
+<title id="meta-title">Dewata Clean Laundry | 24 Hour &amp; Express Laundry Bali</title>
 <link rel="icon" type="image/png" href="logokecil.png">
 <meta name="description" content="Dewata Clean offers laundry services with scheduled pickup and delivery across selected South Bali areas. View service options, prices and express turnaround times.">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -12,7 +12,6 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#3b2f63;--muted:#6b6485;--pri:#9b8cc9;--pri-d:#7b6bb0;--pale:#ece6f7;--bg:#fcf8f6;--card:#fff;--yel:#fbdc8a;--wa:#25d366;--line:rgba(123,107,176,.18);--max:1120px;--py:84px;--f:'Outfit',system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root{--ink:#f1edfb;--muted:#b7b0cf;--pale:#2e2750;--bg:#171326;--card:#241e3a;--line:rgba(155,140,201,.25);--pri-d:#b4a7e0}}
 html{scroll-behavior:smooth}
 body{font-family:var(--f);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%}
@@ -135,6 +134,25 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%}
 @media(max-width:900px){.nav-links{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding-top:100px}.hero-art{height:260px}.hero-art .a1{height:90px}.hero-art .a2{bottom:64px;height:84px}.hero-art .a3{bottom:128px;height:84px}.split-sec{grid-template-columns:1fr}.cards-5,.steps-row,.paket-grid{grid-template-columns:1fr}.paket-grid-bottom{grid-template-columns:1fr}.area-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}:root{--py:60px}}
 @media(max-width:520px){.nav{padding:0 14px}.btn-nav{display:none}.floating-wa span{display:none}.floating-wa{padding:14px}}
 
+
+/* ── Hero photo: transparent, blended into the page ── */
+.hero{max-width:none;overflow:hidden;padding:110px max(24px,calc((100vw - 1120px)/2 + 24px)) 70px;grid-template-columns:minmax(0,640px) 1fr}
+.hero-main{position:relative;z-index:2}
+.hero-art{display:block;position:absolute;z-index:1;top:0;right:0;bottom:0;width:62%;height:auto;
+ background:url('hero-bg1.png') center/cover no-repeat;
+ -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 45%),linear-gradient(to bottom,transparent 0%,#000 22%,#000 72%,transparent 100%);
+ -webkit-mask-composite:source-in;
+ mask-image:linear-gradient(to right,transparent 0%,#000 45%),linear-gradient(to bottom,transparent 0%,#000 22%,#000 72%,transparent 100%);
+ mask-composite:intersect}
+.hero:before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(60% 60% at 85% 40%,#ece6f7aa,transparent 70%)}
+@media(max-width:900px){
+ .hero{display:block;min-height:auto;padding:100px 24px 56px}
+ .hero-art{width:100%;height:440px;bottom:auto;top:64px;opacity:.85;
+  -webkit-mask-image:linear-gradient(to right,transparent 5%,#000 85%),linear-gradient(to bottom,transparent 0%,#000 25%,#000 60%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 5%,#000 85%),linear-gradient(to bottom,transparent 0%,#000 25%,#000 60%,transparent 100%)}
+ .hero-title{font-size:clamp(34px,10vw,48px)}
+ .hero-sub{max-width:300px}
+}
 </style>
 </head>
 <body>
@@ -211,7 +229,7 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%}
       <div class="area-pill"><span class="dot"></span>South Kuta</div>
     </div>
 
-    </div><div class="hero-art" aria-hidden="true"><i class="a3"></i><i class="a2"></i><i class="a1"></i></div><div class="hero-scroll">
+    </div><div class="hero-art" aria-hidden="true"></div><div class="hero-scroll">
       <span data-i18n="scroll_text">Scroll</span>
     </div>
   </section>
