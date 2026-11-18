@@ -9,7 +9,7 @@
   <meta name="description" content="Dewata Clean - Eco premium laundry with plant-based detergents. Extra soft results, free pickup & delivery across South Bali (Jimbaran, Nusa Dua, Uluwatu, Ungasan, Pecatu).">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Baloo+2:wght@800&family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@500&family=Baloo+2:wght@800&family=DM+Mono&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,6 +35,7 @@
       --font-head: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
       --font-mono: 'DM Mono', monospace;
+      --font-sub:  'Montserrat', sans-serif;
 
       --radius-sm: 10px;
       --radius-md: 16px;
@@ -276,16 +277,16 @@
     }
     
     .paket-name  { 
-      font-family: var(--font-head); font-size: 26px; font-weight: 700; 
+      font-family: var(--font-head); font-size: 26px; font-weight: 600; 
       color: var(--ink); margin-bottom: 2px; line-height: 1.2; 
       font-variant-numeric: lining-nums;
     }
     .paket-service { font-family: var(--font-body); font-size: 13px; color: var(--gray-500); margin-bottom: 16px; font-weight: 400; }
-    .paket-price { font-family: var(--font-body); font-size: 26px; color: var(--forest); font-weight: 600; }
+    .paket-price { font-family: var(--font-body); font-size: 26px; color: var(--forest); font-weight: 700; }
     .paket-price small { font-family: var(--font-body); font-size: 14px; color: var(--gray-500); font-weight: 400; }
     .paket-lbs { font-family: var(--font-body); font-size: 12px; color: var(--gray-500); margin-bottom: 16px; font-weight: 400; }
     .p-line { height: 1px; background: rgba(0,0,0,0.06); margin: 16px 0; }
-    .paket-min { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--forest); }
+    .paket-min { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--forest); }
 
     /* ─── KEUNGGULAN ─── */
     .cards-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -299,7 +300,7 @@
       width: 48px; height: 48px; background: var(--forest-pale);
       border-radius: 13px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
     }
-    .kcard-title { font-family: var(--font-head); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+    .kcard-title { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
     .kcard-desc  { font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--gray-500); line-height: 1.65; }
     .kcard-tag   {
       display: inline-block; margin-top: 18px; background: var(--forest-pale); color: var(--forest);
@@ -319,7 +320,7 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-family: var(--font-mono); font-size: 20px; margin-bottom: 28px; border: 4px solid var(--forest-pale2); flex-shrink: 0;
     }
-    .step-title { font-family: var(--font-head); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+    .step-title { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
     .step-desc  { font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--gray-500); line-height: 1.65; max-width: 220px; }
 
     /* ─── SPLIT FEATURE ─── */
@@ -347,7 +348,7 @@
     }
     .area-card:hover { background: rgba(209,248,67,0.1); border-color: rgba(209,248,67,0.3); }
     .area-em  { font-size: 28px; margin-bottom: 10px; display: block; }
-    .area-nm  { font-family: var(--font-head); font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
+    .area-nm  { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
     .area-sub { font-family: var(--font-body); font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.5); }
 
     .area-banner {
@@ -612,7 +613,7 @@
             <div class="paket-price">Rp 60.000 <small data-i18n="per_pair">/ Pairs</small></div>
             <div class="paket-lbs" data-i18n="per_pair_sub">/ Pairs</div>
             <div class="p-line"></div>
-            <div class="paket-min" style="color:var(--gray-700); font-weight:400;" data-i18n="pkg4_desc">Premium shoe cleaning</div>
+            <div class="paket-min" style="color:var(--gray-700); font-weight:600;" data-i18n="pkg4_desc">Premium shoe cleaning</div>
             <a href="#" class="btn-order-paket pkg-order-btn" data-pkg-en="Shoe Service (6-12 Hours) - Rp 60.000/pairs" data-pkg-id="Shoe Service (6-12 Jam) - Rp 60.000/pasang">
               <span data-i18n="order_service_btn">Order This Service</span>
             </a>
