@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18580761883"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18580761883');
+</script>
 <title id="meta-title">Dewata Clean Laundry : 24/7 Free Delivery Laundry Bali</title>
 <link rel="icon" type="image/png" sizes="192x192" href="https://dewataclean.com/logokecil2.png">
 <link rel="apple-touch-icon" href="https://dewataclean.com/logokecil2.png">
@@ -1005,6 +1013,15 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%}
         dot.classList.toggle("active", i === currentIndex);
       });
     }
+
+    // Google Ads conversion: count every WhatsApp (wa.me) click
+    // Ganti ISI_LABEL_DI_SINI dengan label dari event snippet Google Ads
+    const GADS_CONVERSION = 'AW-18580761883/ga5oCM3-7r0dEJva_5tF';
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href*="wa.me"]');
+      if (!a || typeof gtag !== 'function') return;
+      gtag('event', 'conversion', { 'send_to': GADS_CONVERSION });
+    });
 
     setLanguage('en');
     showReview(0);
